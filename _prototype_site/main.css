@@ -30,7 +30,7 @@ a {
 
 body, html {
   max-width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -73,7 +73,7 @@ body {
 .logo {
   font-family: austein, bebas, "europa", Arial, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
   color: white;
-  font-size: 48px;
+  font-size: 70px;
 }
 
 h1 {
@@ -145,6 +145,10 @@ body a:hover, p a:hover {
   text-align: justify;
 }
 
+.error-msg {
+  color: red;
+}
+
 .caption {
   font-style: italic;
   font-family: montserrat-light, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
@@ -162,30 +166,31 @@ body a:hover, p a:hover {
   text-decoration: underline;
 }
 
-.all-content {
+.all-content-wrap {
   width: 100%;
   max-width: 100%;
   min-width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  background: #eee;
 }
-.all-content .main-content {
+.all-content-wrap .main-content {
   width: 80vw;
   padding: 50px 0px;
 }
-.all-content .main-content .section {
+.all-content-wrap .main-content .section {
   padding: 70px;
   background: white;
   border-radius: 12px;
 }
-.all-content .main-content .section:not(:last-child) {
+.all-content-wrap .main-content .section:not(:last-child) {
   margin-bottom: 85px;
 }
-.all-content .main-content .section.center {
+.all-content-wrap .main-content .section.center {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -197,6 +202,98 @@ body a:hover, p a:hover {
   .all-content .main-content {
     width: 90vw;
   }
+}
+#register-login .all-content-wrap {
+  background: #34abf4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  padding: 50px 0px;
+  color: white;
+}
+#register-login .all-content-wrap * {
+  max-width: 85vw;
+}
+#register-login .all-content-wrap .content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  width: 85vw;
+}
+#register-login .all-content-wrap .content-wrap.register {
+  justify-content: flex-start;
+}
+#register-login .logo {
+  margin-bottom: 20px;
+}
+#register-login h3, #register-login p {
+  text-align: left;
+  margin-bottom: 20px;
+  width: 85vw;
+}
+#register-login form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  width: 85vw;
+  margin-bottom: 30px;
+}
+#register-login form input:not(.submit), #register-login form label {
+  margin-bottom: 15px;
+  width: 100%;
+}
+#register-login form input.submit {
+  margin-right: 15px;
+}
+#register-login form .bottom-buttons-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+#register-login form .bottom-buttons-wrap > * {
+  flex: 1;
+}
+#register-login a:not(.button) {
+  color: white;
+}
+
+input {
+  outline: none;
+}
+input[type=submit] {
+  border: none;
+  font-family: montserrat-medium, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+}
+input[type=text], input[type=password], input[type=email] {
+  outline: none;
+  border: solid 1px #bebebe;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.button {
+  padding: 20px 25px;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+.button.green {
+  background: #4efacd;
+}
+.button.clear {
+  background: none;
 }
 
 /*# sourceMappingURL=main.css.map */

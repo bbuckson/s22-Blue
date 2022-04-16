@@ -6,13 +6,142 @@
     <title>Free Time</title>
     <?php require('_includes/scripts.php'); ?>
   </head>
-  <body>
+  <body id="register-login">
 
+    <?php
+      /*
+       * Set the page type
+       */
+       if(isset($_GET['p']))
+       {
+         $page_type = $_GET['p'];
+       }
+       else
+       {
+         $page_type = "login";
+       }
+
+       /*
+        * Set error/success messages if available and reset the session
+        */
+        $error_msg = "";
+        $success_msg = "";
+        if(isset($_SESSION['error_msg']))
+        {
+          $error_msg = $_SESSION['error_msg'];
+          unset($_SESSION['error_msg']);
+        }
+        if(isset($_SESSION['success_msg']))
+        {
+          $success_msg = $_SESSION['success_msg'];
+          unset($_SESSION['success_msg']);
+        }
+    ?>
     <div class="all-content-wrap">
 
-      <div class="logo">Free Time</div>
-      <h1>Register Login</h1>
-      
+
+
+      <?php
+        // Show login form
+        if($page_type == "login") :
+      ?>
+        <div class="content-wrap">
+          <div class="logo">Free Time</div>
+          <?php if($error_msg != "") : ?>
+            <p class="error-msg">
+              <?php echo $error_msg;?>
+            </p>
+          <?php endif; ?>
+          <form method="post" action="_php/form_actions/login.php">
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="password" name="pass" placeholder="Password" required />
+
+            <div class="bottom-buttons-wrap">
+              <input class="button green submit" type="submit" value="Login" />
+              <a class="register button clear" href="?p=register">Sign Up</a>
+            </div>
+
+          </form>
+          <a href="?p=forgot_password">Forgot Password</a>
+        </div>
+
+      <?php endif; ?>
+
+
+      <?php
+        // Show login form
+        if($page_type == "register") :
+      ?>
+        <div class="content-wrap register">
+          <div class="logo">Free Time</div>
+          <h3>Create an Account</h3>
+          <?php if($error_msg != "") : ?>
+            <p class="error-msg">
+              <?php echo $error_msg;?>
+            </p>
+          <?php endif; ?>
+          <form method="post" action="_php/form_actions/register.php">
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="text" name="first_name" placeholder="First Name" required />
+            <input type="text" name="last_name" placeholder="Last Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="pass" placeholder="Password" required />
+            <input type="password" name="pass_2" placeholder="Password Again" required />
+
+            <div class="bottom-buttons-wrap">
+              <input class="button green submit" type="submit" value="Create Account" />
+              <a class="register button clear" href="?p=login">Login</a>
+            </div>
+
+          </form>
+        </div>
+
+      <?php endif; ?>
+
+      <?php
+        // Show login form
+        if($page_type == "register_success") :
+      ?>
+        <?php
+          // If there isn't a response then just go back to login
+          if($success_msg == "")
+          {
+            header('Location: register-login.php');
+          }
+         ?>
+        <div class="content-wrap">
+          <div class="logo">Free Time</div>
+          <h3>Congrats!</h3>
+          <p>
+            Your account has been created. Click the button below to go back to login screen.
+          </p>
+          <br/><br/>
+          <a href="register-login.php" class="button green">Login</a>
+        </div>
+
+      <?php endif; ?>
+
+      <?php
+        // Show login form
+        if($page_type == "forgot_password") :
+      ?>
+        <div class="content-wrap">
+          <div class="logo">Free Time</div>
+          <h3>Forgot Password</h3>
+          <form method="post" action="_php/form_actions/register.php">
+            <label for="email">Enter your user account's verified email address and we will send you a password reset link.</label>
+            <input type="email" name="email" placeholder="Email/Username" required />
+
+            <div class="bottom-buttons-wrap">
+              <input class="button green submit" type="submit" value="Send" />
+              <a class="register button clear" href="?p=login">Login</a>
+            </div>
+
+          </form>
+        </div>
+
+      <?php endif; ?>
+
     </div>
 
   </body>

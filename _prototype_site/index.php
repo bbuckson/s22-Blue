@@ -18,6 +18,6 @@
     ?>
 
     <h1>INDEX</h1>
-
+    <a href="_php/form_actions/logout.php">Logout</a>
   </body>
 </html>

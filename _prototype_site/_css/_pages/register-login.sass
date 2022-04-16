@@ -1,0 +1,46 @@
+#register-login
+  .all-content-wrap
+    background: $blue
+    @include flex(column, center, flex-start, nowrap)
+    padding: 50px 0px
+    color: $white
+
+    *
+      max-width: 85vw
+
+    .content-wrap
+      @include flex(column, center, center, nowrap)
+      min-height: 100vh
+      width: 85vw
+
+      &.register
+        justify-content: flex-start
+
+  .logo
+    margin-bottom: 20px
+  h3, p
+    text-align: left
+    margin-bottom: 20px
+    width: 85vw
+
+  form
+    @include flex(column, center, flex-start, nowrap)
+    width: 85vw
+    margin-bottom: 30px
+
+    input:not(.submit), label
+      margin-bottom: 15px
+      width: 100%
+
+    input.submit
+      margin-right: 15px
+
+    .bottom-buttons-wrap
+      @include flex(row, center, space-between, nowrap)
+      width: 100%
+
+      & > *
+        flex: 1
+
+  a:not(.button)
+    color: $white
