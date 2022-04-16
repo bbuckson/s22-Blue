@@ -1,0 +1,121 @@
+@font-face
+  font-family: bebas
+  src: url(_css/_fonts/_fonts/BebasNeue.otf)
+@font-face
+  font-family: montserrat
+  src: url(_css/_fonts/_fonts/Montserrat-Regular.otf)
+@font-face
+  font-family: montserrat-light
+  src: url(_css/_fonts/_fonts/Montserrat-Light.otf)
+@font-face
+  font-family: montserrat-medium
+  src: url(_css/_fonts/_fonts/Montserrat-Medium.otf)
+@font-face
+  font-family: montserrat-semibold
+  src: url(_css/_fonts/_fonts/Montserrat-SemiBold.otf)
+@font-face
+  font-family: montserrat-bold
+  src: url(_css/_fonts/_fonts/Montserrat-Bold.otf)
+@font-face
+  font-family: austein
+  src: url(_css/_fonts/_fonts/Austein.otf)
+
+@font-face
+  font-family: arialRound
+  src: url(_css/_fonts/_fonts/ARLRDBD.TTF)
+
+$mont: montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"
+$mont-light: montserrat-light, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"
+$mont-medium: montserrat-medium, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"
+$mont-semibold: montserrat-semibold, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"
+$mont-bold: montserrat-bold, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"
+$bebas: bebas, "europa", Arial, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"
+$austein: austein, bebas, "europa", Arial, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"
+$arialRound: arialRound, montserrat, "europa", Arial, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"
+
+body
+  font-family: $mont
+  font-size: 12px
+
+.logo
+  font-family: $austein
+  color: $white
+  font-size: 48px
+
+h1
+  font-family: $mont-bold
+  font-size: 60px
+  margin: 0px
+  margin-block-start: 0px
+  margin-block-end: 0px
+
+h2
+  font-family: $mont-bold
+  font-size: 34px
+
+
+h3
+  font-family: $mont-bold
+  font-size: 22px
+
+h4
+  font-family: $arialRound
+  font-style: normal
+  font-size: 22px
+  text-align: center
+
+h5
+  font-family: $mont-light
+  font-size: 12px
+  font-style: italic
+  margin-bottom: 20px
+  text-align: center
+
+
+body, p
+  font-size: 16px
+  font-family: $mont
+
+  a
+    font-family: $mont-medium
+    margin-right: 2px
+    //color: $links
+
+    &:hover
+      text-decoration: underline
+
+.italic
+  font-style: italic
+
+
+
+// =================================
+// ======  TEXT - ALIGN  ===========
+// =================================
+
+.txt-center
+  width: 100%
+  text-align: center
+
+.txt-left
+  width: 100%
+  text-align: left
+
+.txt-right
+  width: 100%
+  text-align: right
+
+.txt-justify
+  width: 100%
+  text-align: justify
+
+
+// =================================
+// ======  TEXT - Elements  ========
+// =================================
+.caption
+  font-style: italic
+  font-family: $mont-light
+
+  & > *
+    margin-right: 7px

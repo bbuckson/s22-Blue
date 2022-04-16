@@ -1,0 +1,202 @@
+/* RESET */
+html, body, h1, h2, h3, h4, h5, h6, ul, li, div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.ui-loader, .ui-corner-all {
+  display: none;
+}
+
+li {
+  list-style: none;
+}
+
+div, span, h1, h2, h3, h4, h5, h6, p, input, blockquote, li, a {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+body, html {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: bebas;
+  src: url(_css/_fonts/_fonts/BebasNeue.otf);
+}
+@font-face {
+  font-family: montserrat;
+  src: url(_css/_fonts/_fonts/Montserrat-Regular.otf);
+}
+@font-face {
+  font-family: montserrat-light;
+  src: url(_css/_fonts/_fonts/Montserrat-Light.otf);
+}
+@font-face {
+  font-family: montserrat-medium;
+  src: url(_css/_fonts/_fonts/Montserrat-Medium.otf);
+}
+@font-face {
+  font-family: montserrat-semibold;
+  src: url(_css/_fonts/_fonts/Montserrat-SemiBold.otf);
+}
+@font-face {
+  font-family: montserrat-bold;
+  src: url(_css/_fonts/_fonts/Montserrat-Bold.otf);
+}
+@font-face {
+  font-family: austein;
+  src: url(_css/_fonts/_fonts/Austein.otf);
+}
+@font-face {
+  font-family: arialRound;
+  src: url(_css/_fonts/_fonts/ARLRDBD.TTF);
+}
+body {
+  font-family: montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  font-size: 12px;
+}
+
+.logo {
+  font-family: austein, bebas, "europa", Arial, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  color: white;
+  font-size: 48px;
+}
+
+h1 {
+  font-family: montserrat-bold, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  font-size: 60px;
+  margin: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+h2 {
+  font-family: montserrat-bold, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  font-size: 34px;
+}
+
+h3 {
+  font-family: montserrat-bold, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  font-size: 22px;
+}
+
+h4 {
+  font-family: arialRound, montserrat, "europa", Arial, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  font-style: normal;
+  font-size: 22px;
+  text-align: center;
+}
+
+h5 {
+  font-family: montserrat-light, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+body, p {
+  font-size: 16px;
+  font-family: montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+}
+body a, p a {
+  font-family: montserrat-medium, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+  margin-right: 2px;
+}
+body a:hover, p a:hover {
+  text-decoration: underline;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.txt-center {
+  width: 100%;
+  text-align: center;
+}
+
+.txt-left {
+  width: 100%;
+  text-align: left;
+}
+
+.txt-right {
+  width: 100%;
+  text-align: right;
+}
+
+.txt-justify {
+  width: 100%;
+  text-align: justify;
+}
+
+.caption {
+  font-style: italic;
+  font-family: montserrat-light, montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+}
+.caption > * {
+  margin-right: 7px;
+}
+
+.link {
+  color: #f5ab58;
+  font-size: 12px;
+  cursor: pointer;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+.all-content {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  background: #eee;
+}
+.all-content .main-content {
+  width: 80vw;
+  padding: 50px 0px;
+}
+.all-content .main-content .section {
+  padding: 70px;
+  background: white;
+  border-radius: 12px;
+}
+.all-content .main-content .section:not(:last-child) {
+  margin-bottom: 85px;
+}
+.all-content .main-content .section.center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+@media only screen and (max-width: 1550px) {
+  .all-content .main-content {
+    width: 90vw;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
