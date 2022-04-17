@@ -11,3 +11,22 @@ function is_logged_in(){
   }
   return false;
 }
+
+
+
+/*
+ * Display the bar on the top of the screen
+ */
+function show_top_bar($root)
+{
+  require($root . '_includes/top-bar.php');
+}
+
+
+/*
+ * Display the bar on the bottom of the screen
+ */
+function show_bottom_bar($root)
+{
+  require($root . '_includes/bottom-bar.php');
+}

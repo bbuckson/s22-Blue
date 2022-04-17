@@ -212,6 +212,7 @@ body a:hover, p a:hover {
   flex-wrap: nowrap;
   padding: 50px 0px;
   color: white;
+  min-height: calc(100vh - 100px);
 }
 #register-login .all-content-wrap * {
   max-width: 85vw;
@@ -283,6 +284,7 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .button {
+  transition: all 200ms ease-in-out;
   padding: 20px 25px;
   border-radius: 10px;
   color: white;
@@ -294,6 +296,162 @@ input[type=text], input[type=password], input[type=email] {
 }
 .button.clear {
   background: none;
+}
+
+.calendar-wrap {
+  position: relative;
+  height: calc(100vh - 120px);
+  margin-top: 60px;
+  overflow-y: auto;
+}
+.calendar-wrap .date-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  background: white;
+  height: 40px;
+  padding: 0px 30px;
+  color: gainsboro;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+}
+.calendar-wrap .time-slot-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  width: 94vw;
+  border-bottom: solid 1px gainsboro;
+}
+.calendar-wrap .time-slot-wrap .time-text {
+  color: gainsboro;
+  padding: 20px 0px;
+  text-align: center;
+  font-size: 12px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.calendar-wrap .time-slot-wrap .time-slot {
+  width: 100%;
+}
+
+.overlay-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  transition: all 200ms ease-in-out;
+  opacity: 0;
+  height: 100vh;
+  max-height: 0;
+  width: 100vw;
+  max-width: 100vw;
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0px;
+  z-index: 9999;
+  overflow: hidden;
+}
+.overlay-wrap.show {
+  opacity: 1;
+  max-height: 100vh;
+}
+.overlay-wrap .set-block-wrap {
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  width: 90%;
+  color: #474747;
+  font-size: 14px;
+}
+.overlay-wrap .set-block-wrap > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+.overlay-wrap .set-block-wrap .single-label {
+  width: 100%;
+  text-align: center;
+}
+.overlay-wrap .set-block-wrap .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.overlay-wrap .set-block-wrap .row:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+.overlay-wrap .set-block-wrap .close-popup {
+  width: 100%;
+  text-align: center;
+}
+.overlay-wrap .set-block-wrap .button {
+  color: white;
+  flex: 1;
+  padding: 10px 0px;
+  text-align: center;
+  font-size: 14px;
+}
+.overlay-wrap .set-block-wrap .button:first-child {
+  margin-right: 5px;
+}
+.overlay-wrap .set-block-wrap .button:not(.active) {
+  background: gainsboro;
+}
+.overlay-wrap .set-block-wrap .button.free.active {
+  background: #4efacd;
+}
+.overlay-wrap .set-block-wrap .button.blocked.active {
+  background: #ff7f73;
+}
+.overlay-wrap .set-block-wrap .button.submit {
+  background: #34abf4;
+}
+.overlay-wrap .set-block-wrap input {
+  border: none;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100vw;
+  background: #34abf4;
+  padding: 15px 20px;
+  position: fixed;
+  top: 0;
+}
+.top-bar svg, .top-bar img {
+  height: 30px;
+}
+
+.bottom-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100vw;
+  background: #34abf4;
+  padding: 15px 20px;
+  position: fixed;
+  bottom: 0;
+}
+.bottom-bar svg, .bottom-bar img {
+  height: 30px;
 }
 
 /*# sourceMappingURL=main.css.map */

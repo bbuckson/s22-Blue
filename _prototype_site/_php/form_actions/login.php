@@ -20,11 +20,13 @@
   {
     $username = $arr['username'];
     $_SESSION['username'] = $username;
+    $_SESSION['user_id'] = $arr['id'];
   }
   else
   {
     $_SESSION['error_msg'] = "Incorrect Username or Password";
     unset($_SESSION['username']);
+    unset($_SESSION['user_id']);
   }
 
   header('Location: ../../index.php');
