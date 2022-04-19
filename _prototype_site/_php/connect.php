@@ -31,7 +31,11 @@ function db_connect(){
   $username = $config['username'];
   $pass = $config['password'];
 */
-    $host = 'localhost';
+    // Desktop
+    $host = '127.0.0.1:4306';
+    // Laptop
+    //$host = 'localhost';
+
     $dbname = 'free_time';
     $username = 'root';
     $pass = '';
