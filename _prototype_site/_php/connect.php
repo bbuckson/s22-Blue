@@ -39,11 +39,11 @@ function db_connect(){
     // $dbname = 'free_time';
     // $username = 'root';
     // $pass = '';
-    
+
       try{
         $conn = new PDO("mysql:host=$host;dbname=$dbname;", $username, $pass);
       }catch(PDOException $e){
-        die("Connection to the server got f#@ked up");
+        die("Connection to the server got f#@ked up" . $host . $dbname);
       }
 
     return $conn;
