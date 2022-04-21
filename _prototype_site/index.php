@@ -17,7 +17,11 @@
     }
     ?>
 
+    <input type="hidden" name="this_users_id" value="<?php echo $_SESSION['user_id']; ?>" />
+    <input type="hidden" name="my_user_id" value="<?php echo $_SESSION['user_id']; ?>" />
+
     <div class="all-content-wrap home">
+      <!-- <div id="test-area" style="margin-top: 150px; font-size: 8px;">  </div> -->
 
       <!-- Tob Nav bar -->
       <?php show_top_bar($root); ?>
@@ -30,11 +34,36 @@
           $date_formatted = date("Y-m-d");
         ?>
 
+        <div class="blocks-wrap">
+          <div class="block-column">
+
+          </div>
+          <!-- <div class="block free">
+            <div class="title">
+              Free
+            </div>
+            <div class="times">
+              4:00 - 11
+            </div>
+          </div>
+          <div class="block blocked">
+            <div class="title">
+              Blocked
+            </div>
+            <div class="times">
+              4:00 - 11
+            </div>
+          </div> -->
+        </div>
+
+
         <div class="date-wrap">
           <?php echo $curr_date; ?>
           <input name="curr_date" type="hidden" value="<?php echo $date_formatted; ?>" />
         </div>
 
+
+        <!-- Time Slots -->
         <?php
           for($i = 1; $i < 13; $i++) :
         ?>
@@ -51,7 +80,7 @@
         <?php
           for($i = 1; $i < 13; $i++) :
         ?>
-          <div class="time-slot-wrap" data-hour="<?php echo $i; ?>" data-hour-type="PM">
+          <div class="time-slot-wrap" data-hour="<?php echo $i + 12; ?>" data-hour-type="PM">
             <div class="time-text">
               <?php echo $i . ' PM'; ?>
             </div>
@@ -106,7 +135,59 @@
           <div class="close-popup">
             Cancel
           </div>
+        </div>
+      </div>
 
+
+
+
+
+      <!-- Popup to EDIT block of time -->
+      <div class="overlay-wrap edit-block">
+        <div class="edit-block-wrap">
+          <input type="hidden" name="block_id" />
+          <h3>Edit Block</h3>
+          <p class="error-msg">
+
+          </p>
+          <div class="single-label">
+            Block Type
+          </div>
+
+          <div class="row">
+            <div class="button free block-type" data-value="free">
+              Free
+            </div>
+            <div class="button blocked block-type" data-value="blocked">
+              Blocked
+            </div>
+          </div>
+
+          <div class="row">
+            <span>Date</span>
+            <input type="date" name="date" required />
+          </div>
+
+          <div class="row">
+            <span>Start Time</span>
+            <input type="time" name="start_time" required />
+          </div>
+
+          <div class="row">
+            <span>End Time</span>
+            <input type="time" name="end_time" required />
+          </div>
+
+          <div class="row">
+            <div class="button submit" data-form="edit-block">
+              Save
+            </div>
+          </div>
+          <div class="close-popup">
+            Cancel
+          </div>
+
+        </div>
       </div>
 
 

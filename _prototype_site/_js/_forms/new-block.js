@@ -35,9 +35,9 @@ $('.submit[data-form="new-block"]').on('click', function(){
     }
   ).done(
     function(results){
-      console.log(results);
-      if(results === "nice"){
-
+      if(results == "nice"){
+        $('.overlay-wrap.new-block').removeClass('show');
+        updatePersonalCalendar(this_users_id);
       }
       else{
       }

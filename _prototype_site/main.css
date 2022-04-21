@@ -366,7 +366,7 @@ input[type=text], input[type=password], input[type=email] {
   opacity: 1;
   max-height: 100vh;
 }
-.overlay-wrap .set-block-wrap {
+.overlay-wrap .set-block-wrap, .overlay-wrap .edit-block-wrap {
   padding: 20px;
   background: white;
   border-radius: 10px;
@@ -374,14 +374,14 @@ input[type=text], input[type=password], input[type=email] {
   color: #474747;
   font-size: 14px;
 }
-.overlay-wrap .set-block-wrap > *:not(:last-child) {
+.overlay-wrap .set-block-wrap > *:not(:last-child), .overlay-wrap .edit-block-wrap > *:not(:last-child) {
   margin-bottom: 10px;
 }
-.overlay-wrap .set-block-wrap .single-label {
+.overlay-wrap .set-block-wrap .single-label, .overlay-wrap .edit-block-wrap .single-label {
   width: 100%;
   text-align: center;
 }
-.overlay-wrap .set-block-wrap .row {
+.overlay-wrap .set-block-wrap .row, .overlay-wrap .edit-block-wrap .row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -389,37 +389,80 @@ input[type=text], input[type=password], input[type=email] {
   flex-wrap: nowrap;
   width: 100%;
 }
-.overlay-wrap .set-block-wrap .row:not(:last-of-type) {
+.overlay-wrap .set-block-wrap .row:not(:last-of-type), .overlay-wrap .edit-block-wrap .row:not(:last-of-type) {
   margin-bottom: 15px;
 }
-.overlay-wrap .set-block-wrap .close-popup {
+.overlay-wrap .set-block-wrap .close-popup, .overlay-wrap .edit-block-wrap .close-popup {
   width: 100%;
   text-align: center;
 }
-.overlay-wrap .set-block-wrap .button {
+.overlay-wrap .set-block-wrap .button, .overlay-wrap .edit-block-wrap .button {
   color: white;
   flex: 1;
   padding: 10px 0px;
   text-align: center;
   font-size: 14px;
 }
-.overlay-wrap .set-block-wrap .button:first-child {
+.overlay-wrap .set-block-wrap .button:first-child, .overlay-wrap .edit-block-wrap .button:first-child {
   margin-right: 5px;
 }
-.overlay-wrap .set-block-wrap .button:not(.active) {
+.overlay-wrap .set-block-wrap .button:not(.active), .overlay-wrap .edit-block-wrap .button:not(.active) {
   background: gainsboro;
 }
-.overlay-wrap .set-block-wrap .button.free.active {
+.overlay-wrap .set-block-wrap .button.free.active, .overlay-wrap .edit-block-wrap .button.free.active {
   background: #4efacd;
 }
-.overlay-wrap .set-block-wrap .button.blocked.active {
+.overlay-wrap .set-block-wrap .button.blocked.active, .overlay-wrap .edit-block-wrap .button.blocked.active {
   background: #ff7f73;
 }
-.overlay-wrap .set-block-wrap .button.submit {
+.overlay-wrap .set-block-wrap .button.submit, .overlay-wrap .edit-block-wrap .button.submit {
   background: #34abf4;
 }
-.overlay-wrap .set-block-wrap input {
+.overlay-wrap .set-block-wrap input, .overlay-wrap .edit-block-wrap input {
   border: none;
+}
+
+.blocks-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1344px;
+  overflow-x: auto;
+  margin-left: 80px;
+}
+.blocks-wrap .block-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 150px;
+  margin-right: 30px;
+}
+.blocks-wrap .block {
+  position: absolute;
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  min-width: 150px;
+  width: 150px;
+  border-radius: 6px;
+}
+.blocks-wrap .block.free {
+  background: #4efacd;
+}
+.blocks-wrap .block.blocked {
+  background: #ff7f73;
+}
+.blocks-wrap .block .times {
+  font-size: 10px;
+  margin-bottom: 20px;
 }
 
 .top-bar {
