@@ -6,40 +6,40 @@ if(!isset($_SESSION)) {
 
 function db_connect(){
 
-/*
-  if(file_exists('../../../../../unn/config_ph.ini')){
-    $config = parse_ini_file('../../../../../unn/config_ph.ini');
+
+  if(file_exists('../../../../../unn/config_free_blocks.ini')){
+    $config = parse_ini_file('../../../../../unn/config_free_blocks.ini');
   }
   if(file_exists('../../../../unn/config_ph.ini')){
-    $config = parse_ini_file('../../../../unn/config_ph.ini');
+    $config = parse_ini_file('../../../../unn/config_free_blocks.ini');
   }
   if(file_exists('../../../unn/config_ph.ini')){
-    $config = parse_ini_file('../../../unn/config_ph.ini');
+    $config = parse_ini_file('../../../unn/config_free_blocks.ini');
   }
   if(file_exists('../../unn/config_ph.ini')){
-    $config = parse_ini_file('../../unn/config_ph.ini');
+    $config = parse_ini_file('../../unn/config_free_blocks.ini');
   }
   if(file_exists('../unn/config_ph.ini')){
-    $config = parse_ini_file('../unn/config_ph.ini');
+    $config = parse_ini_file('../unn/config_free_blocks.ini');
   }
   if(file_exists('../unn/config_ph.ini')){
-    $config = parse_ini_file('../unn/config_ph.ini');
+    $config = parse_ini_file('../unn/config_free_blocks.ini');
   }
 
   $host = $config['host'];
   $dbname = $config['dbname'];
   $username = $config['username'];
   $pass = $config['password'];
-*/
+
     // Desktop
-    $host = '127.0.0.1:4306';
-    // Laptop
-    //$host = 'localhost';
-
-    $dbname = 'free_time';
-    $username = 'root';
-    $pass = '';
-
+    // $host = '127.0.0.1:4306';
+    // // Laptop
+    // //$host = 'localhost';
+    //
+    // $dbname = 'free_time';
+    // $username = 'root';
+    // $pass = '';
+    
       try{
         $conn = new PDO("mysql:host=$host;dbname=$dbname;", $username, $pass);
       }catch(PDOException $e){
