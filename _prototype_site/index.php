@@ -3,6 +3,7 @@
 // Note: functions are located in _php/functions.php
 if(!is_logged_in())
 {
+  require("_php/functions.php");
   header('Location: register-login.php');
   echo '<script>console.log("Not Logged In")</script>';
   //echo "<script>window.location.href='target.php';</script>";
