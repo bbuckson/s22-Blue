@@ -13,7 +13,13 @@
     // Note: functions are located in _php/functions.php
     if(!is_logged_in())
     {
+      echo '<script>console.log("Logged In")</script>';
+
       header('Location: register-login.php');
+    }
+    else
+    {
+      echo '<script>console.log("Not Logged In")</script>';
     }
     ?>
 
