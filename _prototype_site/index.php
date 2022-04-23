@@ -5,12 +5,6 @@ require("_php/functions.php");
 if(!is_logged_in())
 {
   header('Location: register-login.php');
-  echo '<script>console.log("Not Logged In")</script>';
-  //echo "<script>window.location.href='target.php';</script>";
-}
-else
-{
-  echo '<script>console.log("Is Logged In")</script>';
 }
 ?>
 

@@ -1,3 +1,4 @@
+<?php require("_php/functions.php"); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -31,6 +32,7 @@
           $error_msg = $_SESSION['error_msg'];
           unset($_SESSION['error_msg']);
         }
+
         if(isset($_SESSION['success_msg']))
         {
           $success_msg = $_SESSION['success_msg'];
