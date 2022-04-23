@@ -1,3 +1,18 @@
+<?php
+// If user is not logged in -> direct them to register-login page
+// Note: functions are located in _php/functions.php
+if(!is_logged_in())
+{
+  header('Location: register-login.php');
+  echo '<script>console.log("Not Logged In")</script>';
+  //echo "<script>window.location.href='target.php';</script>";
+}
+else
+{
+  echo '<script>console.log("Is Logged In")</script>';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,20 +23,7 @@
   </head>
   <body>
 
-    <?php
-    // If user is not logged in -> direct them to register-login page
-    // Note: functions are located in _php/functions.php
-    if(!is_logged_in())
-    {
-      echo '<script>console.log("Logged In")</script>';
 
-      header('Location: register-login.php');
-    }
-    else
-    {
-      echo '<script>console.log("Not Logged In")</script>';
-    }
-    ?>
 
     <input type="hidden" name="this_users_id" value="<?php echo $_SESSION['user_id']; ?>" />
     <input type="hidden" name="my_user_id" value="<?php echo $_SESSION['user_id']; ?>" />
