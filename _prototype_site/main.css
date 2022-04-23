@@ -497,4 +497,34 @@ input[type=text], input[type=password], input[type=email] {
   height: 30px;
 }
 
+.user-menu-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  position: absolute;
+  bottom: 60px;
+  right: 0px;
+  width: 50vw;
+  background: white;
+  max-height: 0px;
+  overflow: hidden;
+}
+.user-menu-wrap.open {
+  max-height: 100vh;
+  border: solid 2px #34abf4;
+  border-width: 2px 0px 0px 2px;
+}
+.user-menu-wrap a {
+  width: 100%;
+}
+.user-menu-wrap .item {
+  padding: 20px;
+  width: 100%;
+}
+.user-menu-wrap .item:not(:last-child) {
+  border-bottom: solid 1px #bebebe;
+}
+
 /*# sourceMappingURL=main.css.map */
