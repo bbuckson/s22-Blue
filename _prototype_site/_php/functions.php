@@ -5,7 +5,7 @@ if(!isset($_SESSION)) {
 require('connect.php');
 
 function is_logged_in(){
-  if(isset($_SESSION['username']))
+  if(isset($_SESSION['username_free_blocks']))
   {
     return true;
   }
