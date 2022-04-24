@@ -12,6 +12,7 @@
 
     if($data->execute())
     {
+      echo "TEST " . $_SESSION['user_id'];
       $arr = $data->fetchAll(PDO::FETCH_ASSOC);
 
       foreach ($arr as $item) :
@@ -28,8 +29,5 @@
   <?php
       endforeach;
     }
-    else
-    {
-      echo 'TEST ' . $_SESSION['user_id'];
-    }
+
   ?>
