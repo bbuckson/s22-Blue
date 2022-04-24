@@ -1,0 +1,16 @@
+.add-friend-popup
+  .row.friend-results
+    @include flex(column, stretch, flex-start, nowrap)
+    max-height: 200px
+    overflow-y: auto
+
+    .item
+      @include flex(row, center, flex-start, nowrap)
+      padding: 8px
+
+      &.selected
+        background: $blue
+        color: $white
+
+      .icon
+        margin-right: 20px

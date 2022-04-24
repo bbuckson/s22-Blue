@@ -1,0 +1,83 @@
+.overlay-wrap
+  @include flex(column, center, center, nowrap)
+  @include transition(200ms)
+  opacity: 0
+  height: 100vh
+  max-height: 0
+  width: 100vw
+  max-width: 100vw
+  background: rgba(0,0,0,0.2)
+
+  position: absolute
+  top: 0px
+  z-index: 9999
+
+  overflow: hidden
+
+  &.show
+    opacity: 1
+    max-height: 100vh
+
+  .content-wrap, .set-block-wrap, .edit-block-wrap
+    padding: 20px
+    background: $white
+    border-radius: 10px
+
+    width: 90%
+    color: $light-gray
+
+    font-size: 14px
+
+    & > *:not(:last-child)
+      margin-bottom: 10px
+
+    .single-label
+      width: 100%
+      text-align: center
+
+    .row
+      @include flex(row, center, space-between, nowrap)
+      width: 100%
+
+      &:not(:last-of-type)
+        margin-bottom: 15px
+
+    .close-popup
+      width: 100%
+      text-align: center
+
+    .button
+      //background: $lighterest-gray
+      color: $white
+      flex: 1
+      padding: 10px 0px
+      text-align: center
+      font-size: 14px
+
+      &:first-child
+        margin-right: 5px
+
+      &:not(.active)
+        background: $lighterest-gray
+
+      &.free.active
+        background: $green
+
+      &.blocked.active
+        background: $red
+
+      &.submit
+        background: $blue
+
+    input:not([type="text"])
+      border: none
+
+    input
+
+      &.search
+        background-image: url('_pics/_icons/search.svg')
+        background-repeat: no-repeat
+        background-size: 35px
+        background-position: center left
+        width: 100%
+        padding-left: 50px

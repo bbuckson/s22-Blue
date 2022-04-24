@@ -1,28 +1,6 @@
 .user-menu-wrap
-  @include flex(column, flex-start, flex-start, nowrap)
-  position: absolute
+
   bottom: 60px
   right: 0px
 
   width: 50vw
-
-  background: $white
-
-  max-height: 0px
-  overflow: hidden
-
-  &.open
-    max-height: 100vh
-
-    border: solid 2px $blue
-    border-width: 2px 0px 0px 2px
-
-  a
-    width: 100%
-
-  .item
-    padding: 20px
-    width: 100%
-
-    &:not(:last-child)
-      border-bottom: solid 1px $lighter-gray

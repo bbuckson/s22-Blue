@@ -70,7 +70,7 @@ if(!is_logged_in())
         <?php
           for($i = 1; $i < 13; $i++) :
         ?>
-          <div class="time-slot-wrap" data-hour="<?php echo $i; ?>" data-hour-type="AM">
+          <div class="time-slot-wrap" data-hour="<?php echo $i; ?>" data-hour-type="AM" data-open-popup="new-block">
             <div class="time-text">
               <?php echo $i . ' AM'; ?>
             </div>
@@ -83,7 +83,7 @@ if(!is_logged_in())
         <?php
           for($i = 1; $i < 13; $i++) :
         ?>
-          <div class="time-slot-wrap" data-hour="<?php echo $i + 12; ?>" data-hour-type="PM">
+          <div class="time-slot-wrap" data-hour="<?php echo $i + 12; ?>" data-hour-type="PM" data-open-popup="new-block">
             <div class="time-text">
               <?php echo $i . ' PM'; ?>
             </div>

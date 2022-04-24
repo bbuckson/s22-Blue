@@ -7,7 +7,7 @@ var my_user_id = $('input[name="my_user_id"]').val();
 updatePersonalCalendar(this_users_id);
 
 $('.time-slot-wrap').on('click', function(){
-  $('.overlay-wrap.new-block').addClass('show');
+  
 
   var hour = $(this).attr('data-hour');
   var hourType = $(this).attr('data-hour-type');

@@ -8,6 +8,6 @@
  */
 
 $('*[data-open-pane]').on('click', function(){
-  console.log('sweet');
+  $('.menu.open').removeClass('open');
   $('.' + $(this).attr('data-open-pane')).toggleClass('open');
 });

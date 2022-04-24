@@ -97,6 +97,56 @@ $('.submit[data-form="edit-block"]').on('click', function(){
   );
 
 });
+var friendSearchInput = $('input[name="find_friend"]');
+var friendResultsWrap = $('.add-friend-wrap .friend-results');
+
+friendSearchInput.on('input', function(){
+  var val = $(this).val();
+
+  $.ajax(
+    {
+      url: "_php/functions/find_friend.php",
+      type: "POST",
+      data: {
+        'val': val
+      }
+    }
+  ).done(
+    function(res)
+    {
+      friendResultsWrap.html(res);
+    }
+  )
+});
+
+
+// Select friend
+$('.friend-results').on('click', '.item', function(){
+  $('.friend-results .item.selected').removeClass('selected');
+  $(this).addClass('selected');
+});
+
+
+// Send friend request
+$('.submit[data-form="add-friend"]').on('click', function(){
+  var userId = $('.friend-results .item.selected').attr('data-user-id');
+  $.ajax({
+    url: "_php/form_actions/send_friend_requests.php",
+    type: "POST",
+    data: {
+      'user_id': userId
+    }
+  }).done(
+    function(res)
+    {
+      console.log(res);
+      if(res == "success")
+      {
+
+      }
+    }
+  )
+});
 // The id of the user whose calendar you are trying vie
 var this_users_id = $('input[name="this_users_id"]').val();
 // Your id
@@ -106,7 +156,7 @@ var my_user_id = $('input[name="my_user_id"]').val();
 updatePersonalCalendar(this_users_id);
 
 $('.time-slot-wrap').on('click', function(){
-  $('.overlay-wrap.new-block').addClass('show');
+  
 
   var hour = $(this).attr('data-hour');
   var hourType = $(this).attr('data-hour-type');
@@ -232,6 +282,15 @@ function updatePersonalCalendar(user_id)
 
 
 }
+// Open popup
+$('*[data-open-popup]').on('click', function(){
+  // open popup
+  $('.overlay-wrap.' + $(this).attr('data-open-popup')).addClass('show');
+
+  // Close any open menus
+  $('.menu.open').removeClass('open');
+});
+
 // Close popup
 $('.close-popup').on('click', function(){
   $('.overlay-wrap.show').removeClass('show');
@@ -246,7 +305,7 @@ $('.close-popup').on('click', function(){
  */
 
 $('*[data-open-pane]').on('click', function(){
-  console.log('sweet');
+  $('.menu.open').removeClass('open');
   $('.' + $(this).attr('data-open-pane')).toggleClass('open');
 });
 /*
@@ -281,4 +340,4 @@ function fetchBlocks(user_id) {
   //   }
   // );
 }
-});                                     
+});                                         
