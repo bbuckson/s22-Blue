@@ -5,8 +5,8 @@
   ?>
 
   <img src="<?php echo $root;?>_pics/_icons/calendar.svg" data-open-pane="friends-menu-wrap" />
-  <img src="<?php echo $root;?>_pics/_icons/gear.svg" data-open-pane="notifications-menu-wrap" />
+  <img src="<?php echo $root;?>_pics/_icons/notification_bell.png" data-open-pane="notifications-menu-wrap" />
 
-  
+
 
 </div>

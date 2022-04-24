@@ -20,10 +20,18 @@
 
   <!-- Friends menu -->
   <div class="friends-menu-wrap menu left-side bottom">
-    <div class="menu-wrap-header">Friends</div>
-    <a href="#" data-open-popup="add-friend-popup"><div class="item">+ Add Friend</div></a>
+
   </div>
+
+
+
 
 </div>
 
-<?php require('_popups/include-popups.php');
+
+
+
+
+
+<?php require('_menus/notifications.php'); ?>
+<?php require('_popups/include-popups.php'); ?>

@@ -1,0 +1,33 @@
+.menu.menu.notifications-menu-wrap
+  .item
+    font-size: 12px
+    padding: 0px
+    color: $light-gray
+
+    &[data-seen="0"]
+      background-color: $light-blue
+      color: $white
+
+    .content-wrap
+      @include flex(row, center, flex-start, nowrap)
+      width: 100%
+      padding: 20px
+
+      img
+        margin-right: 15px
+
+    .accept-reject-row
+      @include flex(row, center, center, nowrap)
+      width: 100%
+
+      & > .button
+        flex: 1
+        font-size: 12px
+        padding: 6px
+
+      .button
+        border-radius: 0px
+        &.accept
+          background-color: $green
+        &.reject
+          background-color: $red

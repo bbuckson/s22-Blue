@@ -17,11 +17,12 @@
   /*
    * Insert notification
    */
-  $data = $conn->prepare('INSERT INTO notifications (type,	user_id,	time_recieved,	message) VALUES (:type,	:user_id,	:time_recieved, :message)');
+  $data = $conn->prepare('INSERT INTO notifications (type,	user_id,	time_recieved,	message, sender_user_id) VALUES (:type,	:user_id,	:time_recieved, :message, :sender_user_id)');
   $data->bindParam(':type', $notification_type);
   $data->bindParam(':user_id', $receiving_user_id);
   $data->bindParam(':time_recieved', $time_recieved);
   $data->bindParam(':message', $msg);
+  $data->bindParam(':sender_user_id', $sending_user_id);
 
   if($data->execute())
   {

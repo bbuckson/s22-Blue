@@ -8,6 +8,15 @@
  */
 
 $('*[data-open-pane]').on('click', function(){
-  $('.menu.open').removeClass('open');
-  $('.' + $(this).attr('data-open-pane')).toggleClass('open');
+
+  if($('.' + $(this).attr('data-open-pane')).hasClass('open'))
+  {
+    $('.' + $(this).attr('data-open-pane')).removeClass('open');
+  }
+  else
+  {
+    $('.menu.open').removeClass('open');
+    $('.' + $(this).attr('data-open-pane')).addClass('open').trigger('classChange');;
+  }
+
 });

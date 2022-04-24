@@ -10,23 +10,31 @@
 
 
   &.open
-    max-height: 100vh
+    max-height: 80vh
+    overflow-y: auto
     border: solid 2px $blue
 
-  &.right-side
-    border-width: 2px 0px 0px 2px
-    right: 0px
 
-  &.left-side
-    border-width: 2px 2px 0px 0px
 
   &.bottom
     border-radius: 6px 6px 0px 0px
+    &.right-side
+      border-width: 2px 0px 0px 2px
+      right: 0px
+
+    &.left-side
+      border-width: 2px 2px 0px 0px
 
   &.top
     border-radius: 0px 0px 6px 6px
     top: 60px
 
+    &.right-side
+      border-width: 0px 2px 0px 2px
+      right: 0px
+
+    &.left-side
+      border-width: 2px 2px 0px 0px
 
   .menu-wrap-header
     background-color: $blue

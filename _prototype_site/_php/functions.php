@@ -30,3 +30,22 @@ function show_bottom_bar($root)
 {
   require($root . '_includes/bottom-bar.php');
 }
+
+
+/*
+ * Get user row with their id as parameter
+ */
+
+function get_user($user_id)
+{
+  $conn = db_connect();
+
+  $data = $conn->prepare('SELECT * FROM users WHERE id = :id');
+  $data->bindParam(':id', $user_id);
+
+  $data->execute();
+
+  $arr = $data->fetchAll(PDO::FETCH_ASSOC);
+
+  return $arr[0];
+}

@@ -40,10 +40,9 @@ $('.submit[data-form="add-friend"]').on('click', function(){
   }).done(
     function(res)
     {
-      console.log(res);
       if(res == "success")
       {
-
+        $('.overlay-wrap.show').removeClass('show');
       }
     }
   )

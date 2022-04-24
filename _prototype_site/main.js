@@ -71,7 +71,6 @@ $('.submit[data-form="edit-block"]').on('click', function(){
 
   setBlockForm.find('p.error-msg').html(errorMsg);
 
-  console.log(blockId);
   $.ajax(
     {
       url: "_php/form_actions/edit_block.php",
@@ -139,10 +138,9 @@ $('.submit[data-form="add-friend"]').on('click', function(){
   }).done(
     function(res)
     {
-      console.log(res);
       if(res == "success")
       {
-
+        $('.overlay-wrap.show').removeClass('show');
       }
     }
   )
@@ -282,6 +280,98 @@ function updatePersonalCalendar(user_id)
 
 
 }
+var notificationsMenu = $('.notifications-menu-wrap');
+
+/*
+ * When menu is opened
+ */
+notificationsMenu.on('classChange', function(){
+
+  if( $(this).hasClass('open') )
+  {
+
+    // Populate notifications
+    $.ajax({
+      url: "_php/menus/retrieve-notifications.php",
+      type: "POST",
+      data: {
+      }
+    }).done(
+      function(res)
+      {
+        notificationsMenu.find('.items-wrap').html(res);
+      }
+    );
+
+
+    // Remove Seen
+    $.ajax({
+      url: "_php/menus/set-seen-notifications.php",
+      type: "POST",
+      data: {
+      }
+    }).done(
+      function(res)
+      {
+      }
+    );
+
+  }
+});
+
+
+
+/*
+ * When friend request is accepted or rejected
+ */
+notificationsMenu.on('click', '[data-type="friend_request"] .button', function(){
+  var itemWrap = $(this).closest('.item');
+  var value = $(this).attr('data-value');
+  var senderId = $(this).closest('.item').attr('data-sender');
+  var notificationId = $(this).closest('.item').attr('data-notification-id');
+
+  // Handle accept/reject
+  $.ajax({
+    url: "_php/form_actions/accept-reject-friend-request.php",
+    type: "POST",
+    data: {
+      'sender_id': senderId,
+      'value': value,
+      'notification_id': notificationId
+    }
+  }).done(
+    function(res)
+    {
+      itemWrap.html('<div class="content-wrap">' + res + '</div>');
+      itemWrap.delay(1000).fadeOut(500);
+    }
+  );
+
+});
+var friendsMenu = $('.friends-menu-wrap');
+
+/*
+ * When menu is opened
+ */
+friendsMenu.on('classChange', function(){
+  if( $(this).hasClass('open') )
+  {
+
+    // Populate friends
+    $.ajax({
+      url: "_php/menus/retrieve-friends-list.php",
+      type: "POST",
+      data: {
+      }
+    }).done(
+      function(res)
+      {
+        friendsMenu.html(res);
+      }
+    );
+
+  }
+});
 // Open popup
 $('*[data-open-popup]').on('click', function(){
   // open popup
@@ -305,8 +395,17 @@ $('.close-popup').on('click', function(){
  */
 
 $('*[data-open-pane]').on('click', function(){
-  $('.menu.open').removeClass('open');
-  $('.' + $(this).attr('data-open-pane')).toggleClass('open');
+
+  if($('.' + $(this).attr('data-open-pane')).hasClass('open'))
+  {
+    $('.' + $(this).attr('data-open-pane')).removeClass('open');
+  }
+  else
+  {
+    $('.menu.open').removeClass('open');
+    $('.' + $(this).attr('data-open-pane')).addClass('open').trigger('classChange');;
+  }
+
 });
 /*
  * Returns an array of Blocks
@@ -326,18 +425,6 @@ function fetchBlocks(user_id) {
       }
     }
   );
-  // ).done(
-  //   function(results){
-  //     $('#test-area').html(results);
-  //     console.log("HMM" + results);
-  //     //res = results;
-  //     //return results['block_type'];
-  //
-  //     $.each(results,function (i,item) {
-  //
-  //        console.log(item.start_time);
-  //     });
-  //   }
-  // );
+
 }
-});                                         
+});                                              

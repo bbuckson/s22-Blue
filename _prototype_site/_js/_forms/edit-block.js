@@ -17,7 +17,6 @@ $('.submit[data-form="edit-block"]').on('click', function(){
 
   setBlockForm.find('p.error-msg').html(errorMsg);
 
-  console.log(blockId);
   $.ajax(
     {
       url: "_php/form_actions/edit_block.php",

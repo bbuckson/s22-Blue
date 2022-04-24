@@ -16,17 +16,5 @@ function fetchBlocks(user_id) {
       }
     }
   );
-  // ).done(
-  //   function(results){
-  //     $('#test-area').html(results);
-  //     console.log("HMM" + results);
-  //     //res = results;
-  //     //return results['block_type'];
-  //
-  //     $.each(results,function (i,item) {
-  //
-  //        console.log(item.start_time);
-  //     });
-  //   }
-  // );
+
 }

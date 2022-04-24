@@ -443,22 +443,30 @@ img.icon {
   z-index: 999;
 }
 .menu.open {
-  max-height: 100vh;
+  max-height: 80vh;
+  overflow-y: auto;
   border: solid 2px #34abf4;
-}
-.menu.right-side {
-  border-width: 2px 0px 0px 2px;
-  right: 0px;
-}
-.menu.left-side {
-  border-width: 2px 2px 0px 0px;
 }
 .menu.bottom {
   border-radius: 6px 6px 0px 0px;
 }
+.menu.bottom.right-side {
+  border-width: 2px 0px 0px 2px;
+  right: 0px;
+}
+.menu.bottom.left-side {
+  border-width: 2px 2px 0px 0px;
+}
 .menu.top {
   border-radius: 0px 0px 6px 6px;
   top: 60px;
+}
+.menu.top.right-side {
+  border-width: 0px 2px 0px 2px;
+  right: 0px;
+}
+.menu.top.left-side {
+  border-width: 2px 2px 0px 0px;
 }
 .menu .menu-wrap-header {
   background-color: #34abf4;
@@ -481,6 +489,39 @@ img.icon {
 .friends-menu-wrap {
   bottom: 60px;
   left: 0px;
+  font-size: 14px;
+}
+.friends-menu-wrap a.add-friend-button {
+  color: white;
+}
+.friends-menu-wrap a.add-friend-button:hover {
+  text-decoration: none;
+}
+.friends-menu-wrap .add-friend-button {
+  background-color: #5fbdf6;
+}
+.friends-menu-wrap .friends-list-wrap {
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.friends-menu-wrap .friends-list-wrap .item-wrap {
+  padding: 10px;
+  color: #474747;
+  text-decoration: none;
+}
+.friends-menu-wrap .friends-list-wrap .item-wrap:not(:last-child) {
+  border-bottom: solid 1px gainsboro;
+}
+.friends-menu-wrap .friends-list-wrap .item-wrap a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+.friends-menu-wrap .friends-list-wrap .item-wrap img {
+  margin-right: 15px;
 }
 
 .overlay-wrap {
@@ -567,6 +608,50 @@ img.icon {
   background-position: center left;
   width: 100%;
   padding-left: 50px;
+}
+
+.menu.menu.notifications-menu-wrap .item {
+  font-size: 12px;
+  padding: 0px;
+  color: #474747;
+}
+.menu.menu.notifications-menu-wrap .item[data-seen="0"] {
+  background-color: #5fbdf6;
+  color: white;
+}
+.menu.menu.notifications-menu-wrap .item .content-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 20px;
+}
+.menu.menu.notifications-menu-wrap .item .content-wrap img {
+  margin-right: 15px;
+}
+.menu.menu.notifications-menu-wrap .item .accept-reject-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.menu.menu.notifications-menu-wrap .item .accept-reject-row > .button {
+  flex: 1;
+  font-size: 12px;
+  padding: 6px;
+}
+.menu.menu.notifications-menu-wrap .item .accept-reject-row .button {
+  border-radius: 0px;
+}
+.menu.menu.notifications-menu-wrap .item .accept-reject-row .button.accept {
+  background-color: #4efacd;
+}
+.menu.menu.notifications-menu-wrap .item .accept-reject-row .button.reject {
+  background-color: #ff7f73;
 }
 
 .add-friend-popup .row.friend-results {
