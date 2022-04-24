@@ -6,13 +6,15 @@
     }
     require('../functions.php');
 
+    $user_id = $_SESSION['user_id'];
+
     $conn = db_connect();
     $data = $conn->prepare('SELECT * FROM friends WHERE user_id_1 = :user_id');
-    $data->bindParam(':user_id', $_SESSION['user_id']);
+    $data->bindParam(':user_id', $user_id);
 
     if($data->execute())
     {
-      echo "TEST " . $_SESSION['user_id'];
+      echo "TEST " . $user_id;
       $arr = $data->fetchAll(PDO::FETCH_ASSOC);
 
       foreach ($arr as $item) :
