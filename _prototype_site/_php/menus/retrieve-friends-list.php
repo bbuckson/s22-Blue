@@ -12,7 +12,6 @@
 
     if($data->execute())
     {
-      echo "TEST #" . $user_id . "<br/>User: " . $_SESSION['username_free_blocks'];
       $arr = $data->fetchAll(PDO::FETCH_ASSOC);
 
       foreach ($arr as $item) :
