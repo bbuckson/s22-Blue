@@ -16,7 +16,7 @@ friendsMenu.on('classChange', function(){
     }).done(
       function(res)
       {
-        friendsMenu.html(res);
+        friendsMenu.find('.friends-list-wrap').html(res);
       }
     );
 

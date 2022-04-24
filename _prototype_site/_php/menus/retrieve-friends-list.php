@@ -1,7 +1,4 @@
-<div class="menu-wrap-header">Friends</div>
 
-<!-- Show friends -->
-<div class="friends-list-wrap">
 
   <?php
     if(!isset($_SESSION)) {
@@ -34,5 +31,3 @@
   ?>
 
 </div>
-
-<a href="#" class="add-friend-button" data-open-popup="add-friend-popup"><div class="item add-friend-button">+ Add Friend</div></a>
