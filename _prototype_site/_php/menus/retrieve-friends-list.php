@@ -28,4 +28,8 @@
   <?php
       endforeach;
     }
+    else
+    {
+      echo 'TEST ' . $_SESSION['user_id'];
+    }
   ?>
