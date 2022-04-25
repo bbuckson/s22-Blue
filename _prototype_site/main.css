@@ -684,6 +684,9 @@ img.icon {
   padding-left: 50px;
 }
 
+.menu.menu.notifications-menu-wrap .items-wrap {
+  width: 100%;
+}
 .menu.menu.notifications-menu-wrap .item {
   font-size: 12px;
   padding: 0px;
