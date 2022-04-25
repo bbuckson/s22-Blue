@@ -175,9 +175,11 @@ $('.submit[data-form="add-friend"]').on('click', function(){
 var this_users_id = $('input[name="this_users_id"]').val();
 // Your id
 var my_user_id = $('input[name="my_user_id"]').val();
+var relationship_type = $('input[name="relationship"]').val();
 
 // Update Blocks on calendar initially
 updatePersonalCalendar(this_users_id);
+
 
 $('.time-slot-wrap').on('click', function(){
 
@@ -262,7 +264,7 @@ function updatePersonalCalendar(user_id)
   var blockList = fetchBlocks(user_id).done(function(response){
     // Clear preious blocks to add new ones
     blocksWrap.find('.block-column').html('');
-    
+
     // Go through each block
     $.each(response, function(i, block){
 
@@ -310,6 +312,12 @@ function updatePersonalCalendar(user_id)
 
 
 }
+// if(relationship_type == "friends")
+// {
+  $('.time-slot-wrap').on('click', function(){
+    console.log('sweeettte');
+  });
+// }
 var notificationsMenu = $('.notifications-menu-wrap');
 
 /*
@@ -457,4 +465,4 @@ function fetchBlocks(user_id) {
   );
 
 }
-});                                                
+});                                                  
