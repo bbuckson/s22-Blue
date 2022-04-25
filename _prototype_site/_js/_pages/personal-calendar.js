@@ -50,6 +50,11 @@ $('.time-slot-wrap').on('click', function(){
  * Open edit popup when editable block is clicked
  */
 $('.blocks-wrap').on('click', '.block', function(){
+  // If you can't edit -> Just exit
+  if($(this).attr('data-edit') == "false")
+  {
+    return 0;
+  }
   var startTime = $(this).attr('data-start_time').substring(0,8);
   var endTime = $(this).attr('data-end_time').substring(0,8);
   var blockType = $(this).attr('data-block_type');
@@ -119,11 +124,6 @@ function updatePersonalCalendar(user_id)
       // Check if user owns this block
       var canEdit = (this_users_id == my_user_id) ? "true" : "false";
 
-
-
-      // Create block
-      blocksWrap.find('.block-column').append('<div class="block ' + blockType + '" data-id="' + block['id'] + '" data-edit="' + canEdit + '" data-start_date="' + startDate + '" data-start_time="' + startTime + '" data-end_time="' + endTime + '" data-block_type="' + blockType + '"><div class="title">' + blockMsg + '</div><div class="times">' + fullStartTime + ' - ' + fullEndTime + '</div></div>');
-
       // Postion the block based on time
       yPos = (startHour - 1) * timeslotHeight + (parseInt(startMinutes) / 60 * timeslotHeight);
 
@@ -131,7 +131,42 @@ function updatePersonalCalendar(user_id)
       var diff = ( new Date("1970-1-1 " + endTime) - new Date("1970-1-1 " + startTime) ) / 1000 / 60 / 60;
       blockHeight = diff * timeslotHeight;
 
-      $('.block[data-id="' + id + '"]').css({"top": yPos + "px", "height": blockHeight + "px"});
+      // Create Free or Blocked block
+      if(blockType == 'blocked' || blockType == 'free')
+      {
+        blocksWrap.find('.block-column').append('<div class="block ' + blockType + '" data-id="' + block['id'] + '" data-edit="' + canEdit + '" data-start_date="' + startDate + '" data-start_time="' + startTime + '" data-end_time="' + endTime + '" data-block_type="' + blockType + '"><div class="title">' + blockMsg + '</div><div class="times">' + fullStartTime + ' - ' + fullEndTime + '</div></div>');
+
+
+        $('.block[data-id="' + id + '"]').css({"top": yPos + "px", "height": blockHeight + "px"});
+      }
+      if(blockType == 'event')
+      {
+
+        $.ajax(
+          {
+            url: "_php/functions/show_event_block.php",
+            type: 'POST',
+            data: {
+              'event_id': block['event_id'],
+              'block_id': block['id'],
+              'user_id': this_users_id,
+              'full_start_time': fullStartTime,
+              'full_end_time': fullEndTime,
+              'y_pos': yPos,
+              'block_height': blockHeight
+            }
+          }
+        ).done(
+          function(results){
+            console.log(results);
+            blocksWrap.find('.block-column').append(results);
+            $('.block[data-id="' + id + '"]').css({"top": yPos + "px", "height": blockHeight + "px"});
+          }
+        )
+      }
+
+
+
 
     });
 

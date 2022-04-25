@@ -18,7 +18,7 @@
         $friend = get_user($item['user_id_2']);
   ?>
       <div class="item-wrap">
-        <a href="calendar?uid=<?php echo $friend['id']; ?>">
+        <a href="calendar.php?uid=<?php echo $friend['id']; ?>">
           <img src="_pics/_users/<?php echo $friend['image'];?>" class="icon" />
           <div class="msg-wrap">
             <?php echo $friend['username'];?>

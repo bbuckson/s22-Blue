@@ -268,6 +268,13 @@ body a:hover, p a:hover {
   color: white;
 }
 
+.user-calendar .blocks-wrap .block-column {
+  width: 230px;
+}
+.user-calendar .blocks-wrap .block-column .block {
+  width: 230px;
+}
+
 input {
   outline: none;
 }
@@ -281,6 +288,25 @@ input[type=text], input[type=password], input[type=email] {
   font-size: 20px;
   padding: 20px;
   border-radius: 8px;
+}
+
+textarea {
+  width: 100%;
+  border: solid 1px #bebebe;
+  height: 100px;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+}
+
+.overlay-wrap input {
+  outline: none;
+  font-family: montserrat, "europa", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+}
+.overlay-wrap input[type=text], .overlay-wrap input[type=password], .overlay-wrap input[type=email] {
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
 }
 
 .button {
@@ -382,6 +408,12 @@ input[type=text], input[type=password], input[type=email] {
 .blocks-wrap .block.blocked {
   background: #ff7f73;
 }
+.blocks-wrap .block.event {
+  background: #34abf4;
+}
+.blocks-wrap .block.event[data-accepted="0"] {
+  background: rgba(52, 171, 244, 0.7);
+}
 .blocks-wrap .block .times {
   font-size: 10px;
   margin-bottom: 20px;
@@ -414,7 +446,7 @@ img.icon {
   justify-content: space-between;
   flex-wrap: nowrap;
   width: 100vw;
-  background: #34abf4;
+  background: #5fbdf6;
   padding: 15px 20px;
   position: fixed;
   bottom: 0;
@@ -422,11 +454,50 @@ img.icon {
 .bottom-bar svg, .bottom-bar img {
   height: 30px;
 }
+.bottom-bar .user-info-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  position: absolute;
+  left: 0px;
+  bottom: 60px;
+  width: 100vw;
+  background: #34abf4;
+  max-height: 50px;
+}
+.bottom-bar .user-info-wrap .img-wrap {
+  border-radius: 80px;
+  border: solid 8px #34abf4;
+  border-bottom: none;
+  background: #34abf4;
+  transform: translateY(-17px);
+  margin-right: 5px;
+}
+.bottom-bar .user-info-wrap .img-wrap img {
+  border-radius: 80px;
+  height: 72px;
+  width: 72px;
+}
+.bottom-bar .user-info-wrap .username {
+  color: white;
+}
 
 .user-menu-wrap {
   bottom: 60px;
   right: 0px;
   width: 50vw;
+}
+.user-menu-wrap .menu-wrap-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+.user-menu-wrap .menu-wrap-header img {
+  margin-right: 15px;
 }
 
 .menu {
@@ -436,7 +507,7 @@ img.icon {
   justify-content: flex-start;
   flex-wrap: nowrap;
   position: absolute;
-  width: 50vw;
+  width: 80vw;
   background: white;
   max-height: 0px;
   overflow: hidden;
@@ -445,7 +516,7 @@ img.icon {
 .menu.open {
   max-height: 80vh;
   overflow-y: auto;
-  border: solid 2px #34abf4;
+  border: solid 2px #5fbdf6;
 }
 .menu.bottom {
   border-radius: 6px 6px 0px 0px;
@@ -469,7 +540,7 @@ img.icon {
   border-width: 2px 2px 0px 0px;
 }
 .menu .menu-wrap-header {
-  background-color: #34abf4;
+  background-color: #5fbdf6;
   padding: 8px;
   padding-left: 15px;
   width: 100%;
@@ -498,7 +569,7 @@ img.icon {
   text-decoration: none;
 }
 .friends-menu-wrap .add-friend-button {
-  background-color: #5fbdf6;
+  background-color: #34abf4;
 }
 .friends-menu-wrap .friends-list-wrap {
   width: 100%;
@@ -546,7 +617,7 @@ img.icon {
   opacity: 1;
   max-height: 100vh;
 }
-.overlay-wrap .content-wrap, .overlay-wrap .set-block-wrap, .overlay-wrap .edit-block-wrap {
+.overlay-wrap .content-wrap, .overlay-wrap .set-block-wrap, .overlay-wrap .edit-block-wrap, .overlay-wrap .set-event-wrap {
   padding: 20px;
   background: white;
   border-radius: 10px;
@@ -554,14 +625,14 @@ img.icon {
   color: #474747;
   font-size: 14px;
 }
-.overlay-wrap .content-wrap > *:not(:last-child), .overlay-wrap .set-block-wrap > *:not(:last-child), .overlay-wrap .edit-block-wrap > *:not(:last-child) {
+.overlay-wrap .content-wrap > *:not(:last-child), .overlay-wrap .set-block-wrap > *:not(:last-child), .overlay-wrap .edit-block-wrap > *:not(:last-child), .overlay-wrap .set-event-wrap > *:not(:last-child) {
   margin-bottom: 10px;
 }
-.overlay-wrap .content-wrap .single-label, .overlay-wrap .set-block-wrap .single-label, .overlay-wrap .edit-block-wrap .single-label {
+.overlay-wrap .content-wrap .single-label, .overlay-wrap .set-block-wrap .single-label, .overlay-wrap .edit-block-wrap .single-label, .overlay-wrap .set-event-wrap .single-label {
   width: 100%;
   text-align: center;
 }
-.overlay-wrap .content-wrap .row, .overlay-wrap .set-block-wrap .row, .overlay-wrap .edit-block-wrap .row {
+.overlay-wrap .content-wrap .row, .overlay-wrap .set-block-wrap .row, .overlay-wrap .edit-block-wrap .row, .overlay-wrap .set-event-wrap .row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -569,42 +640,42 @@ img.icon {
   flex-wrap: nowrap;
   width: 100%;
 }
-.overlay-wrap .content-wrap .row:not(:last-of-type), .overlay-wrap .set-block-wrap .row:not(:last-of-type), .overlay-wrap .edit-block-wrap .row:not(:last-of-type) {
+.overlay-wrap .content-wrap .row:not(:last-of-type), .overlay-wrap .set-block-wrap .row:not(:last-of-type), .overlay-wrap .edit-block-wrap .row:not(:last-of-type), .overlay-wrap .set-event-wrap .row:not(:last-of-type) {
   margin-bottom: 15px;
 }
-.overlay-wrap .content-wrap .close-popup, .overlay-wrap .set-block-wrap .close-popup, .overlay-wrap .edit-block-wrap .close-popup {
+.overlay-wrap .content-wrap .close-popup, .overlay-wrap .set-block-wrap .close-popup, .overlay-wrap .edit-block-wrap .close-popup, .overlay-wrap .set-event-wrap .close-popup {
   width: 100%;
   text-align: center;
 }
-.overlay-wrap .content-wrap .button, .overlay-wrap .set-block-wrap .button, .overlay-wrap .edit-block-wrap .button {
+.overlay-wrap .content-wrap .button, .overlay-wrap .set-block-wrap .button, .overlay-wrap .edit-block-wrap .button, .overlay-wrap .set-event-wrap .button {
   color: white;
   flex: 1;
   padding: 10px 0px;
   text-align: center;
   font-size: 14px;
 }
-.overlay-wrap .content-wrap .button:first-child, .overlay-wrap .set-block-wrap .button:first-child, .overlay-wrap .edit-block-wrap .button:first-child {
+.overlay-wrap .content-wrap .button:first-child, .overlay-wrap .set-block-wrap .button:first-child, .overlay-wrap .edit-block-wrap .button:first-child, .overlay-wrap .set-event-wrap .button:first-child {
   margin-right: 5px;
 }
-.overlay-wrap .content-wrap .button:not(.active), .overlay-wrap .set-block-wrap .button:not(.active), .overlay-wrap .edit-block-wrap .button:not(.active) {
+.overlay-wrap .content-wrap .button:not(.active), .overlay-wrap .set-block-wrap .button:not(.active), .overlay-wrap .edit-block-wrap .button:not(.active), .overlay-wrap .set-event-wrap .button:not(.active) {
   background: gainsboro;
 }
-.overlay-wrap .content-wrap .button.free.active, .overlay-wrap .set-block-wrap .button.free.active, .overlay-wrap .edit-block-wrap .button.free.active {
+.overlay-wrap .content-wrap .button.free.active, .overlay-wrap .set-block-wrap .button.free.active, .overlay-wrap .edit-block-wrap .button.free.active, .overlay-wrap .set-event-wrap .button.free.active {
   background: #4efacd;
 }
-.overlay-wrap .content-wrap .button.blocked.active, .overlay-wrap .set-block-wrap .button.blocked.active, .overlay-wrap .edit-block-wrap .button.blocked.active {
+.overlay-wrap .content-wrap .button.blocked.active, .overlay-wrap .set-block-wrap .button.blocked.active, .overlay-wrap .edit-block-wrap .button.blocked.active, .overlay-wrap .set-event-wrap .button.blocked.active {
   background: #ff7f73;
 }
-.overlay-wrap .content-wrap .button.submit, .overlay-wrap .set-block-wrap .button.submit, .overlay-wrap .edit-block-wrap .button.submit {
+.overlay-wrap .content-wrap .button.submit, .overlay-wrap .set-block-wrap .button.submit, .overlay-wrap .edit-block-wrap .button.submit, .overlay-wrap .set-event-wrap .button.submit {
   background: #34abf4;
 }
-.overlay-wrap .content-wrap .button.delete, .overlay-wrap .set-block-wrap .button.delete, .overlay-wrap .edit-block-wrap .button.delete {
+.overlay-wrap .content-wrap .button.delete, .overlay-wrap .set-block-wrap .button.delete, .overlay-wrap .edit-block-wrap .button.delete, .overlay-wrap .set-event-wrap .button.delete {
   background: #ff7f73;
 }
-.overlay-wrap .content-wrap input:not([type=text]), .overlay-wrap .set-block-wrap input:not([type=text]), .overlay-wrap .edit-block-wrap input:not([type=text]) {
+.overlay-wrap .content-wrap input:not([type=text]), .overlay-wrap .set-block-wrap input:not([type=text]), .overlay-wrap .edit-block-wrap input:not([type=text]), .overlay-wrap .set-event-wrap input:not([type=text]) {
   border: none;
 }
-.overlay-wrap .content-wrap input.search, .overlay-wrap .set-block-wrap input.search, .overlay-wrap .edit-block-wrap input.search {
+.overlay-wrap .content-wrap input.search, .overlay-wrap .set-block-wrap input.search, .overlay-wrap .edit-block-wrap input.search, .overlay-wrap .set-event-wrap input.search {
   background-image: url("_pics/_icons/search.svg");
   background-repeat: no-repeat;
   background-size: 35px;
@@ -617,6 +688,7 @@ img.icon {
   font-size: 12px;
   padding: 0px;
   color: #474747;
+  width: 100%;
 }
 .menu.menu.notifications-menu-wrap .item[data-seen="0"] {
   background-color: #5fbdf6;
@@ -655,6 +727,64 @@ img.icon {
 }
 .menu.menu.notifications-menu-wrap .item .accept-reject-row .button.reject {
   background-color: #ff7f73;
+}
+
+.overlay-wrap.new-event .add-friends-wrap {
+  position: relative;
+}
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap {
+  position: absolute;
+  bottom: 80px;
+  background: white;
+  overflow-y: auto;
+  width: 100%;
+  max-height: 0px;
+  border-radius: 6px;
+}
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap.show {
+  max-height: 200px;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.29);
+}
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  padding: 10px;
+}
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item:not(:last-child) {
+  border-bottom: solid 1px gainsboro;
+}
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item img {
+  height: 30px;
+  margin-right: 15px;
+}
+.overlay-wrap.new-event .friends-coming {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.overlay-wrap.new-event .friends-coming .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  font-size: 12px;
+  color: white;
+  background: #5fbdf6;
+  border-radius: 100px;
+  padding: 8px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+.overlay-wrap.new-event .friends-coming .item img {
+  width: 20px;
+  margin-right: 6px;
+  border-radius: 100px;
+}
+.overlay-wrap.new-event .hidden-checkboxes {
+  display: none;
 }
 
 .add-friend-popup .row.friend-results {

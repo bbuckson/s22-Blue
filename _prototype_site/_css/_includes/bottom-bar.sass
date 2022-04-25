@@ -1,7 +1,7 @@
 .bottom-bar
   @include flex(row, center, space-between, nowrap)
   width: 100vw
-  background: $blue
+  background: $light-blue
   padding: 15px 20px
 
   position: fixed
@@ -9,3 +9,29 @@
 
   svg, img
     height: 30px
+
+
+  .user-info-wrap
+    @include flex(row, center, flex-start, nowrap)
+    position: absolute
+    left: 0px
+    bottom: 60px
+    width: 100vw
+    background: $blue
+    max-height: 50px
+
+    .img-wrap
+      border-radius: 80px
+      border: solid 8px $blue
+      border-bottom: none
+      background: $blue
+      transform: translateY(-17px)
+      margin-right: 5px
+
+      img
+        border-radius: 80px
+        height: 72px
+        width: 72px
+
+    .username
+      color: $white

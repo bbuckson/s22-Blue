@@ -171,6 +171,105 @@ $('.submit[data-form="add-friend"]').on('click', function(){
     }
   )
 });
+var newEventWrap = $('.overlay-wrap.new-event');
+
+/*
+ * Show suggested friends when typing
+ */
+$('.new-event-add-friends').on('input', function(){
+  var val = $(this).val();
+
+  newEventWrap.find('.search-friends-wrap').addClass('show');
+  $.ajax(
+    {
+      url: "_php/functions/find_friend.php",
+      type: "POST",
+      data: {
+        'val': val
+      }
+    }
+  ).done(
+    function(res)
+    {
+      newEventWrap.find('.search-friends-wrap').html(res);
+    }
+  )
+});
+
+
+/*
+ * On Select friend
+ */
+newEventWrap.find('.search-friends-wrap').on('click', '.item', function(){
+  var userId = $(this).attr('data-user-id');
+  var userName = $(this).attr('data-username');
+  var userImage = $(this).find('img').attr('src');
+
+  // Reset
+  newEventWrap.find('.search-friends-wrap').removeClass('show');
+  newEventWrap.find('.search-friends-wrap').html();
+  newEventWrap.find('.new-event-add-friends').val('');
+
+  // Add checkbox for user selected
+  newEventWrap.find('.hidden-checkboxes').append('<input type="checkbox" name="invitees[]" value="' + userId + '" checked="checked" />');
+
+  // Add user to list of attendees
+  newEventWrap.find('.friends-coming').append('<div class="item"><img src="' + userImage + '" /><div class="title">' + userName + '</div></div>');
+
+});
+
+
+/*
+ * On Submit
+ */
+$('.button.submit[data-form="new-event"]').on('click', function(){
+  var title = newEventWrap.find('[name="event_title"]').val();
+  var desc = newEventWrap.find('[name="event_description"]').val();
+  var startDate = newEventWrap.find('input[name="date"]').val();
+  var startTime = newEventWrap.find('input[name="start_time"]').val();
+  var endTime = newEventWrap.find('input[name="end_time"]').val();
+
+  var attendees = new Array();
+  newEventWrap.find("input:checked").each(function() {
+     attendees.push($(this).val());
+  });
+
+  var errorMsg = "";
+  if (title == null || title == "" || startDate == null || startDate == "" || startTime == null || startTime == "" || endTime == null || endTime == "")
+  {
+    errorMsg = "All fields are required.";
+  }
+
+  newEventWrap.find('p.error-msg').html(errorMsg);
+
+  $.ajax(
+    {
+      url: "_php/form_actions/new_event.php",
+      type: 'POST',
+      data: {
+        'event_title': title,
+        'event_description': desc,
+        'start_time': startTime,
+        'end_time': endTime,
+        'start_date': startDate,
+        'attendees': attendees
+      }
+    }
+  ).done(
+    function(results){
+      updatePersonalCalendar(this_users_id);
+      $('.overlay-wrap.show').removeClass('show');
+      // if(results == "nice"){
+      //   $('.overlay-wrap.new-block').removeClass('show');
+      //   updatePersonalCalendar(this_users_id);
+      // }
+      // else{
+      // }
+    }
+  );
+
+
+});
 // The id of the user whose calendar you are trying vie
 var this_users_id = $('input[name="this_users_id"]').val();
 // Your id
@@ -223,6 +322,11 @@ $('.time-slot-wrap').on('click', function(){
  * Open edit popup when editable block is clicked
  */
 $('.blocks-wrap').on('click', '.block', function(){
+  // If you can't edit -> Just exit
+  if($(this).attr('data-edit') == "false")
+  {
+    return 0;
+  }
   var startTime = $(this).attr('data-start_time').substring(0,8);
   var endTime = $(this).attr('data-end_time').substring(0,8);
   var blockType = $(this).attr('data-block_type');
@@ -292,11 +396,6 @@ function updatePersonalCalendar(user_id)
       // Check if user owns this block
       var canEdit = (this_users_id == my_user_id) ? "true" : "false";
 
-
-
-      // Create block
-      blocksWrap.find('.block-column').append('<div class="block ' + blockType + '" data-id="' + block['id'] + '" data-edit="' + canEdit + '" data-start_date="' + startDate + '" data-start_time="' + startTime + '" data-end_time="' + endTime + '" data-block_type="' + blockType + '"><div class="title">' + blockMsg + '</div><div class="times">' + fullStartTime + ' - ' + fullEndTime + '</div></div>');
-
       // Postion the block based on time
       yPos = (startHour - 1) * timeslotHeight + (parseInt(startMinutes) / 60 * timeslotHeight);
 
@@ -304,7 +403,42 @@ function updatePersonalCalendar(user_id)
       var diff = ( new Date("1970-1-1 " + endTime) - new Date("1970-1-1 " + startTime) ) / 1000 / 60 / 60;
       blockHeight = diff * timeslotHeight;
 
-      $('.block[data-id="' + id + '"]').css({"top": yPos + "px", "height": blockHeight + "px"});
+      // Create Free or Blocked block
+      if(blockType == 'blocked' || blockType == 'free')
+      {
+        blocksWrap.find('.block-column').append('<div class="block ' + blockType + '" data-id="' + block['id'] + '" data-edit="' + canEdit + '" data-start_date="' + startDate + '" data-start_time="' + startTime + '" data-end_time="' + endTime + '" data-block_type="' + blockType + '"><div class="title">' + blockMsg + '</div><div class="times">' + fullStartTime + ' - ' + fullEndTime + '</div></div>');
+
+
+        $('.block[data-id="' + id + '"]').css({"top": yPos + "px", "height": blockHeight + "px"});
+      }
+      if(blockType == 'event')
+      {
+
+        $.ajax(
+          {
+            url: "_php/functions/show_event_block.php",
+            type: 'POST',
+            data: {
+              'event_id': block['event_id'],
+              'block_id': block['id'],
+              'user_id': this_users_id,
+              'full_start_time': fullStartTime,
+              'full_end_time': fullEndTime,
+              'y_pos': yPos,
+              'block_height': blockHeight
+            }
+          }
+        ).done(
+          function(results){
+            console.log(results);
+            blocksWrap.find('.block-column').append(results);
+            $('.block[data-id="' + id + '"]').css({"top": yPos + "px", "height": blockHeight + "px"});
+          }
+        )
+      }
+
+
+
 
     });
 
@@ -312,12 +446,42 @@ function updatePersonalCalendar(user_id)
 
 
 }
-// if(relationship_type == "friends")
-// {
+if(relationship_type == "friends")
+{
   $('.time-slot-wrap').on('click', function(){
-    console.log('sweeettte');
+    var hour = $(this).attr('data-hour');
+    var hourType = $(this).attr('data-hour-type');
+    var currDate = $('input[name="curr_date"]').val();
+
+
+    hour = parseInt(hour);
+    endHour = hour + 1;
+
+    // the inputs takes 24 hour time so we need to add 12 if it's PM
+    if (hourType == "PM")
+    {
+      hourType += 12;
+    }
+
+    // Convert back to string so we can add a leading zero if it's one digit
+    hour = hour.toString();
+    endHour = endHour.toString();
+
+    if(hour.length == 1)
+    {
+      hour = "0" + hour;
+    }
+    if(endHour.length == 1)
+    {
+      endHour = "0" + endHour;
+    }
+
+    $('.overlay-wrap.new-event').find('input[name="start_time"]').val(hour + ':00:00');
+    $('.overlay-wrap.new-event').find('input[name="end_time"]').val(endHour + ':00:00');
+    $('.overlay-wrap.new-event').find('input[name="date"]').val(currDate);
+
   });
-// }
+}
 var notificationsMenu = $('.notifications-menu-wrap');
 
 /*
@@ -465,4 +629,4 @@ function fetchBlocks(user_id) {
   );
 
 }
-});                                                  
+});                                                              
