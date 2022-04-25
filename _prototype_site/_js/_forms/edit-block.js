@@ -31,7 +31,6 @@ $('.submit[data-form="edit-block"]').on('click', function(){
     }
   ).done(
     function(results){
-      console.log(results);
       if(results == "nice"){
         $('.overlay-wrap.edit-block').removeClass('show');
         updatePersonalCalendar(this_users_id);
@@ -41,4 +40,31 @@ $('.submit[data-form="edit-block"]').on('click', function(){
     }
   );
 
+});
+
+
+
+/*
+ * Delete Block
+ */
+$('.button.delete[data-form="edit-block"]').on('click', function(){
+  var blockId = $(this).closest('.edit-block-wrap').find('input[name="block_id"]').val();
+
+  $.ajax(
+    {
+      url: "_php/form_actions/delete_block.php",
+      type: 'POST',
+      data: {
+        'block_id': blockId
+      }
+    }
+  ).done(
+    function(results){
+      if(results == "nice"){
+        $('.overlay-wrap.edit-block').removeClass('show');
+        updatePersonalCalendar(this_users_id);
+      }
+
+    }
+  );
 });

@@ -15,6 +15,7 @@
   <!-- user menu -->
   <div class="user-menu-wrap menu right-side bottom">
     <div class="menu-wrap-header"></div>
+    <a href="<?php echo $root . 'calendar?uid=' . $_SESSION['user_id'];?>"><div class="item">My Calendar</div></a>
     <a href="<?php echo $root . '_php/form_actions/logout.php';?>"><div class="item">Logout</div></a>
   </div>
 

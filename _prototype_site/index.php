@@ -186,6 +186,11 @@ if(!is_logged_in())
               Save
             </div>
           </div>
+          <div class="row">
+            <div class="button delete" data-form="edit-block">
+              Delete
+            </div>
+          </div>
           <div class="close-popup">
             Cancel
           </div>

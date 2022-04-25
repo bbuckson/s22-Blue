@@ -85,7 +85,6 @@ $('.submit[data-form="edit-block"]').on('click', function(){
     }
   ).done(
     function(results){
-      console.log(results);
       if(results == "nice"){
         $('.overlay-wrap.edit-block').removeClass('show');
         updatePersonalCalendar(this_users_id);
@@ -95,6 +94,34 @@ $('.submit[data-form="edit-block"]').on('click', function(){
     }
   );
 
+});
+
+
+
+/*
+ * Delete Block
+ */
+$('.button.delete[data-form="edit-block"]').on('click', function(){
+  var blockId = $(this).closest('.edit-block-wrap').find('input[name="block_id"]').val();
+
+  $.ajax(
+    {
+      url: "_php/form_actions/delete_block.php",
+      type: 'POST',
+      data: {
+        'block_id': blockId
+      }
+    }
+  ).done(
+    function(results){
+      if(results == "nice"){
+        $('.overlay-wrap.edit-block').removeClass('show');
+        updatePersonalCalendar(this_users_id);
+        console.log('What');
+      }
+
+    }
+  );
 });
 var friendSearchInput = $('input[name="find_friend"]');
 var friendResultsWrap = $('.add-friend-wrap .friend-results');
@@ -154,7 +181,7 @@ var my_user_id = $('input[name="my_user_id"]').val();
 updatePersonalCalendar(this_users_id);
 
 $('.time-slot-wrap').on('click', function(){
-  
+
 
   var hour = $(this).attr('data-hour');
   var hourType = $(this).attr('data-hour-type');
@@ -234,7 +261,9 @@ function updatePersonalCalendar(user_id)
 
   // Need to do this because it's the only way I can figure out how to use the data
   var blockList = fetchBlocks(user_id).done(function(response){
-
+    // Clear preious blocks to add new ones
+    blocksWrap.find('.block-column').html('');
+    
     // Go through each block
     $.each(response, function(i, block){
 
@@ -261,6 +290,8 @@ function updatePersonalCalendar(user_id)
 
       // Check if user owns this block
       var canEdit = (this_users_id == my_user_id) ? "true" : "false";
+
+
 
       // Create block
       blocksWrap.find('.block-column').append('<div class="block ' + blockType + '" data-id="' + block['id'] + '" data-edit="' + canEdit + '" data-start_date="' + startDate + '" data-start_time="' + startTime + '" data-end_time="' + endTime + '" data-block_type="' + blockType + '"><div class="title">' + blockMsg + '</div><div class="times">' + fullStartTime + ' - ' + fullEndTime + '</div></div>');
@@ -366,7 +397,6 @@ friendsMenu.on('classChange', function(){
     }).done(
       function(res)
       {
-        console.log(res);
         friendsMenu.find('.friends-list-wrap').html(res);
       }
     );
@@ -428,4 +458,4 @@ function fetchBlocks(user_id) {
   );
 
 }
-});                                              
+});                                                

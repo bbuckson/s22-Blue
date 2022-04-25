@@ -598,6 +598,9 @@ img.icon {
 .overlay-wrap .content-wrap .button.submit, .overlay-wrap .set-block-wrap .button.submit, .overlay-wrap .edit-block-wrap .button.submit {
   background: #34abf4;
 }
+.overlay-wrap .content-wrap .button.delete, .overlay-wrap .set-block-wrap .button.delete, .overlay-wrap .edit-block-wrap .button.delete {
+  background: #ff7f73;
+}
 .overlay-wrap .content-wrap input:not([type=text]), .overlay-wrap .set-block-wrap input:not([type=text]), .overlay-wrap .edit-block-wrap input:not([type=text]) {
   border: none;
 }
