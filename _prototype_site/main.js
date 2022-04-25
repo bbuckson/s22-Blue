@@ -117,7 +117,6 @@ $('.button.delete[data-form="edit-block"]').on('click', function(){
       if(results == "nice"){
         $('.overlay-wrap.edit-block').removeClass('show');
         updatePersonalCalendar(this_users_id);
-        console.log('What');
       }
 
     }
