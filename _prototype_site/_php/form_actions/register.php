@@ -6,12 +6,8 @@
     $_SESSION['error_msg'] = "Passwords Must Match";
 
     header('Location: ../../register-login.php?p=register');
-    die('not matched');
   }
-  else
-  {
-    die('why');
-  }
+
 
   $password = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
