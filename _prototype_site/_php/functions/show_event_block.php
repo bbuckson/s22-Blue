@@ -35,6 +35,7 @@
     }
   }
 
+
   // Only show info on block if this user is us
   if($user_id == $my_id):
 ?>
@@ -47,6 +48,7 @@
     data-end_time="<?php echo $block['end_time'];?>"
     data-block_type="event"
     data-accepted="<?php echo $user_in_event['accepted'];?>"
+    data-event-id="<?php echo $event['id'];?>"
     style="
       top: <?php echo $_POST['y_pos'];?>px;
       height: <?php echo $_POST['block_height'];?>px;
@@ -74,12 +76,13 @@
 ?>
   <div class="block event"
     data-id="<?php echo $_POST['block_id']; ?>"
-    data-edit="false"
+    data-edit="<?php echo $can_edit; ?>"
     data-start_date="<?php echo $block['start_date'];?>"
     data-start_time="<?php echo $block['start_time'];?>"
     data-end_time="<?php echo $block['end_time'];?>"
     data-block_type="event"
     data-accepted="<?php echo $user_in_event['accepted'];?>"
+    data-event-id="<?php echo $event['id'];?>"
     style="
       top: <?php echo $_POST['y_pos'];?>px;
       height: <?php echo $_POST['block_height'];?>px;

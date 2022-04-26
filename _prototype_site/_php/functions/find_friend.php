@@ -27,10 +27,10 @@
       </div>
     </a>
 <?php endforeach;
-    }
+    }  
     else
     {
-      echo "No Results";
+      echo '<a class="item">No Results</a>';
     }
   }
   else

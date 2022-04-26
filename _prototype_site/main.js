@@ -176,10 +176,11 @@ var newEventWrap = $('.overlay-wrap.new-event');
 /*
  * Show suggested friends when typing
  */
-$('.new-event-add-friends').on('input', function(){
+$('.overlay-wrap').on('input', '.new-event-add-friends',function(){
   var val = $(this).val();
+  var wrap = $(this).closest('.overlay-wrap');
 
-  newEventWrap.find('.search-friends-wrap').addClass('show');
+  wrap.find('.search-friends-wrap').addClass('show');
   $.ajax(
     {
       url: "_php/functions/find_friend.php",
@@ -191,10 +192,22 @@ $('.new-event-add-friends').on('input', function(){
   ).done(
     function(res)
     {
-      newEventWrap.find('.search-friends-wrap').html(res);
+      wrap.find('.search-friends-wrap').html(res);
     }
   )
 });
+
+
+/*
+ * Close suggested friends
+ */
+ $('.overlay-wrap').on('click', ' *:not(.search-friends-wrap)', function(event){
+   event.stopPropagation();
+   $('.search-friends-wrap.show').removeClass('show');
+ });
+
+
+
 
 
 /*
@@ -214,9 +227,34 @@ newEventWrap.find('.search-friends-wrap').on('click', '.item', function(){
   newEventWrap.find('.hidden-checkboxes').append('<input type="checkbox" name="invitees[]" value="' + userId + '" checked="checked" />');
 
   // Add user to list of attendees
-  newEventWrap.find('.friends-coming').append('<div class="item"><img src="' + userImage + '" /><div class="title">' + userName + '</div></div>');
+  newEventWrap.find('.friends-coming').append('<div class="item" data-accepted="0" data-user-id="' + userId + '"><img src="' + userImage + '" /><div class="title">' + userName + '</div></div>');
 
 });
+
+/*
+ * Remove friend from attendee list
+ */
+ $('.overlay-wrap').on('click', '.friends-coming > .item, .friends-coming > .item > *', function(event){
+   event.stopPropagation();
+
+   // If we click on children, we need to set item
+   var itemWrap = $(this);
+   if(!$(this).hasClass('item'))
+    itemWrap = $(this).closest('.item');
+
+   // If this user isn't unchecked
+   if(!itemWrap.hasClass('removed'))
+   {
+     itemWrap.addClass('removed');
+     itemWrap.closest('.overlay-wrap').find('input[value="' + itemWrap.attr('data-user-id') + '"]').prop('checked', false);
+   }
+   else
+   {
+     itemWrap.removeClass('removed');
+     itemWrap.closest('.overlay-wrap').find('input[value="' + itemWrap.attr('data-user-id') + '"]').prop('checked', true);
+
+   }
+ });
 
 
 /*
@@ -238,9 +276,11 @@ $('.button.submit[data-form="new-event"]').on('click', function(){
   if (title == null || title == "" || startDate == null || startDate == "" || startTime == null || startTime == "" || endTime == null || endTime == "")
   {
     errorMsg = "All fields are required.";
+    newEventWrap.find('p.error-msg').html(errorMsg);
+    return 0;
   }
 
-  newEventWrap.find('p.error-msg').html(errorMsg);
+
 
   $.ajax(
     {
@@ -268,6 +308,110 @@ $('.button.submit[data-form="new-event"]').on('click', function(){
     }
   );
 
+
+});
+$('.calendar-wrap').on('click', '.block.event[data-edit="true"]', function(){
+  var popupWrap = $('.overlay-wrap.edit-event');
+
+  var eventId = $(this).attr('data-event-id');
+
+  $.ajax(
+    {
+      url: "_php/functions/show_edit_event_contents.php",
+      type: "POST",
+      data: {
+        'event_id': eventId
+      }
+    }
+  ).done(
+    function(res)
+    {
+      popupWrap.find('.edit-event-wrap').html(res);
+      popupWrap.addClass('show');
+    }
+  )
+
+});
+
+
+
+/*
+ * On Submit
+ */
+$('.edit-event-wrap').on('click', '.button.submit[data-form="edit-event"]', function(){
+
+  var editEventWrap = $('.edit-event-wrap');
+
+
+  var eventId = editEventWrap.find('[name="event-id"]').val();
+
+  var title = editEventWrap.find('[name="event_title"]').val();
+  var desc = editEventWrap.find('[name="event_description"]').val();
+  var startDate = editEventWrap.find('input[name="date"]').val();
+  var startTime = editEventWrap.find('input[name="start_time"]').val();
+  var endTime = editEventWrap.find('input[name="end_time"]').val();
+
+  var attendees = new Array();
+  editEventWrap.find("input:checked").each(function() {
+     attendees.push($(this).val());
+  });
+
+  var errorMsg = "";
+  if (title == null || title == "" || startDate == null || startDate == "" || startTime == null || startTime == "" || endTime == null || endTime == "")
+  {
+    errorMsg = "All fields are required.";
+    editEventWrap.find('p.error-msg').html(errorMsg);
+    return 0;
+  }
+
+
+
+  $.ajax(
+    {
+      url: "_php/form_actions/edit_event.php",
+      type: 'POST',
+      data: {
+        'event_id': eventId,
+        'event_title': title,
+        'event_description': desc,
+        'start_time': startTime,
+        'end_time': endTime,
+        'start_date': startDate,
+        'attendees': attendees
+      }
+    }
+  ).done(
+    function(results){
+      console.log(results);
+      updatePersonalCalendar(this_users_id);
+      //$('.overlay-wrap.show').removeClass('show');
+
+    }
+  );
+
+
+});
+
+
+
+/*
+ * On Select friend
+ */
+$('.edit-event-wrap').on('click', '.search-friends-wrap > .item', function(){
+  var userId = $(this).attr('data-user-id');
+  var userName = $(this).attr('data-username');
+  var userImage = $(this).find('img').attr('src');
+
+  // Reset
+  $('.edit-event-wrap').find('.search-friends-wrap').removeClass('show');
+  $('.edit-event-wrap').find('.search-friends-wrap').html();
+  $('.edit-event-wrap').find('.new-event-add-friends').val('');
+
+  // Add checkbox for user selected
+  $('.edit-event-wrap').find('.hidden-checkboxes').append('<input type="checkbox" name="invitees[]" value="' + userId + '" checked="checked" />');
+
+  // Add user to list of attendees
+  $('.edit-event-wrap').find('.friends-coming').append('<div class="item" data-accepted="0" data-user-id="' + userId + '"><img src="' + userImage + '" /><div class="title">' + userName + '</div></div>');
 
 });
 // The id of the user whose calendar you are trying vie
@@ -321,7 +465,7 @@ $('.time-slot-wrap').on('click', function(){
 /*
  * Open edit popup when editable block is clicked
  */
-$('.blocks-wrap').on('click', '.block', function(){
+$('.blocks-wrap').on('click', '.block:not(.event)', function(){
   // If you can't edit -> Just exit
   if($(this).attr('data-edit') == "false")
   {
@@ -447,6 +591,9 @@ function updatePersonalCalendar(user_id)
 }
 if(relationship_type == "friends")
 {
+  /*
+   * When you click on friend's time slot
+   */
   $('.time-slot-wrap').on('click', function(){
     var hour = $(this).attr('data-hour');
     var hourType = $(this).attr('data-hour-type');
@@ -480,6 +627,27 @@ if(relationship_type == "friends")
     $('.overlay-wrap.new-event').find('input[name="date"]').val(currDate);
 
   });
+
+  /*
+   * When you click on friends free block
+   */
+   $('.user-calendar.friends').on('click', '.block.free', function(){
+
+     var startTime = $(this).attr('data-start_time').substring(0,8);
+     var endTime = $(this).attr('data-end_time').substring(0,8);
+     // var hourType = $(this).attr('data-hour-type');
+     var currDate = $('input[name="curr_date"]').val();
+
+     var popupWrap = $('.overlay-wrap.new-event');
+
+
+     $('.overlay-wrap.new-event').find('input[name="start_time"]').val(startTime);
+     $('.overlay-wrap.new-event').find('input[name="end_time"]').val(endTime);
+     $('.overlay-wrap.new-event').find('input[name="date"]').val(currDate);
+
+     popupWrap.addClass('show');
+
+   });
 }
 var notificationsMenu = $('.notifications-menu-wrap');
 
@@ -626,7 +794,7 @@ $('*[data-open-popup]').on('click', function(){
 });
 
 // Close popup
-$('.close-popup').on('click', function(){
+$('.overlay-wrap').on('click', '.close-popup', function(){
   $('.overlay-wrap.show').removeClass('show');
 });
 /*
@@ -671,4 +839,4 @@ function fetchBlocks(user_id) {
   );
 
 }
-});                                                                   
+});                                                                        

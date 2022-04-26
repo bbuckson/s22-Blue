@@ -95,6 +95,25 @@ function get_block($block_id)
 
 
 /*
+ * Get all users attending an event in users_in_event rows with the event id as param
+ */
+
+function get_all_users_in_event($event_id)
+{
+  $conn = db_connect();
+
+  $data = $conn->prepare('SELECT * FROM users_in_event WHERE event_id = :event_id');
+  $data->bindParam(':event_id', $event_id);
+
+  $data->execute();
+
+  $arr = $data->fetchAll(PDO::FETCH_ASSOC);
+
+  if($data->rowCount() > 0)
+    return $arr;
+}
+
+/*
  * Get users_in_event row with their id as parameter
  */
 
@@ -111,7 +130,7 @@ function get_users_in_event($event_id, $user_id)
   $arr = $data->fetchAll(PDO::FETCH_ASSOC);
 
   if($data->rowCount() > 0)
-    return $arr[0];
+    return $arr;
 }
 
 

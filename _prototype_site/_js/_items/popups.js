@@ -8,6 +8,6 @@ $('*[data-open-popup]').on('click', function(){
 });
 
 // Close popup
-$('.close-popup').on('click', function(){
+$('.overlay-wrap').on('click', '.close-popup', function(){
   $('.overlay-wrap.show').removeClass('show');
 });

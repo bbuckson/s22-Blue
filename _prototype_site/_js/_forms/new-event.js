@@ -3,10 +3,11 @@ var newEventWrap = $('.overlay-wrap.new-event');
 /*
  * Show suggested friends when typing
  */
-$('.new-event-add-friends').on('input', function(){
+$('.overlay-wrap').on('input', '.new-event-add-friends',function(){
   var val = $(this).val();
+  var wrap = $(this).closest('.overlay-wrap');
 
-  newEventWrap.find('.search-friends-wrap').addClass('show');
+  wrap.find('.search-friends-wrap').addClass('show');
   $.ajax(
     {
       url: "_php/functions/find_friend.php",
@@ -18,10 +19,22 @@ $('.new-event-add-friends').on('input', function(){
   ).done(
     function(res)
     {
-      newEventWrap.find('.search-friends-wrap').html(res);
+      wrap.find('.search-friends-wrap').html(res);
     }
   )
 });
+
+
+/*
+ * Close suggested friends
+ */
+ $('.overlay-wrap').on('click', ' *:not(.search-friends-wrap)', function(event){
+   event.stopPropagation();
+   $('.search-friends-wrap.show').removeClass('show');
+ });
+
+
+
 
 
 /*
@@ -41,9 +54,34 @@ newEventWrap.find('.search-friends-wrap').on('click', '.item', function(){
   newEventWrap.find('.hidden-checkboxes').append('<input type="checkbox" name="invitees[]" value="' + userId + '" checked="checked" />');
 
   // Add user to list of attendees
-  newEventWrap.find('.friends-coming').append('<div class="item"><img src="' + userImage + '" /><div class="title">' + userName + '</div></div>');
+  newEventWrap.find('.friends-coming').append('<div class="item" data-accepted="0" data-user-id="' + userId + '"><img src="' + userImage + '" /><div class="title">' + userName + '</div></div>');
 
 });
+
+/*
+ * Remove friend from attendee list
+ */
+ $('.overlay-wrap').on('click', '.friends-coming > .item, .friends-coming > .item > *', function(event){
+   event.stopPropagation();
+
+   // If we click on children, we need to set item
+   var itemWrap = $(this);
+   if(!$(this).hasClass('item'))
+    itemWrap = $(this).closest('.item');
+
+   // If this user isn't unchecked
+   if(!itemWrap.hasClass('removed'))
+   {
+     itemWrap.addClass('removed');
+     itemWrap.closest('.overlay-wrap').find('input[value="' + itemWrap.attr('data-user-id') + '"]').prop('checked', false);
+   }
+   else
+   {
+     itemWrap.removeClass('removed');
+     itemWrap.closest('.overlay-wrap').find('input[value="' + itemWrap.attr('data-user-id') + '"]').prop('checked', true);
+
+   }
+ });
 
 
 /*
@@ -65,9 +103,11 @@ $('.button.submit[data-form="new-event"]').on('click', function(){
   if (title == null || title == "" || startDate == null || startDate == "" || startTime == null || startTime == "" || endTime == null || endTime == "")
   {
     errorMsg = "All fields are required.";
+    newEventWrap.find('p.error-msg').html(errorMsg);
+    return 0;
   }
 
-  newEventWrap.find('p.error-msg').html(errorMsg);
+
 
   $.ajax(
     {

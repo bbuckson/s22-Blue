@@ -56,7 +56,7 @@
 
     <!-- list of friends coming -->
     <div class="row friends-coming">
-      <div class="item">
+      <div class="item" data-accepted="1">
         <img src="_pics/_users/<?php echo $current_user['image']; ?>" />
         <div class="title">
           <?php echo $current_user['username']; ?>

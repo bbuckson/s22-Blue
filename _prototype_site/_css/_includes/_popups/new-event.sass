@@ -1,4 +1,4 @@
-.overlay-wrap.new-event
+.overlay-wrap.new-event, .overlay-wrap.edit-event
   .add-friends-wrap
     position: relative
 
@@ -41,6 +41,14 @@
       padding: 8px
       margin-right: 4px
       margin-bottom: 4px
+      border: solid 2px $light-blue
+
+      &.removed
+        color: $light-blue
+        background: $white
+
+      &[data-accepted="1"]:not(.removed)
+        background: $blue
 
       img
         width: 20px

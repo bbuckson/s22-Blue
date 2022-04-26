@@ -49,7 +49,7 @@ $('.time-slot-wrap').on('click', function(){
 /*
  * Open edit popup when editable block is clicked
  */
-$('.blocks-wrap').on('click', '.block', function(){
+$('.blocks-wrap').on('click', '.block:not(.event)', function(){
   // If you can't edit -> Just exit
   if($(this).attr('data-edit') == "false")
   {

@@ -2,10 +2,10 @@
 // If user is not logged in -> direct them to register-login page
 // Note: functions are located in _php/functions.php
 require("_php/functions.php");
-// if(!is_logged_in())
-// {
-//   header('Location: register-login.php');
-// }
+if(!is_logged_in())
+{
+  header('Location: register-login.php');
+}
 ?>
 
 <!DOCTYPE html>
