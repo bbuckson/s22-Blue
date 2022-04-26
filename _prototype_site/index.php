@@ -30,7 +30,7 @@ if(!is_logged_in())
       <?php show_top_bar($root); ?>
 
       <!-- Calendar -->
-      <div class="calendar-wrap personal">
+      <div class="calendar-wrap all-friends">
 
         <?php
           $curr_date = date("D M jS");
@@ -101,7 +101,7 @@ if(!is_logged_in())
 
 
 
-    
+
 
 
 

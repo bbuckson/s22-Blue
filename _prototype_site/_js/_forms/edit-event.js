@@ -72,7 +72,7 @@ $('.edit-event-wrap').on('click', '.button.submit[data-form="edit-event"]', func
     function(results){
       console.log(results);
       updatePersonalCalendar(this_users_id);
-      //$('.overlay-wrap.show').removeClass('show');
+      $('.overlay-wrap.show').removeClass('show');
 
     }
   );
