@@ -24,13 +24,44 @@ if(!is_logged_in())
     <input type="hidden" name="my_user_id" value="<?php echo $_SESSION['user_id']; ?>" />
 
     <div class="all-content-wrap home">
-      <!-- <div id="test-area" style="margin-top: 150px; font-size: 8px;">  </div> -->
+
 
       <!-- Tob Nav bar -->
       <?php show_top_bar($root); ?>
 
+
+
       <!-- Calendar -->
       <div class="calendar-wrap all-friends">
+
+        <!-- user image are -->
+        <div class="friends-image-wrap">
+
+          <?php
+            $friends_list = get_all_friends();
+
+            $friend_count = 0;
+            foreach ($friends_list as $friend) :
+              //if(get_users_block($friend['user_id_2']) !== null) :
+                $friend_user = get_user($friend['user_id_2']);
+          ?>
+
+            <a href="calendar.php?uid=<?php echo $friend_user['id']; ?>" >
+              <div class="user-image-wrap" data-count="<?php echo $friend_count; ?>">
+                <div class="image-wrap">
+                  <img src="_pics/_users/<?php echo $friend_user['image']; ?>" />
+                </div>
+              </div>
+            </a>
+
+          <?php
+              //endif;
+              $friend_count++;
+            endforeach;
+          ?>
+        </div>
+
+        
 
         <?php
           $curr_date = date("D M jS");
@@ -65,21 +96,18 @@ if(!is_logged_in())
           <?php
             $friends_list = get_all_friends();
 
+            $friend_count = 0;
             foreach ($friends_list as $friend) :
               //if(get_users_block($friend['user_id_2']) !== null) :
                 $friend_user = get_user($friend['user_id_2']);
           ?>
+
+
             <div class="block-column">
 
               <input type="hidden" name="friend_id" value="<?php echo $friend['user_id_2']; ?>" />
 
-              <a href="calendar.php?uid=<?php echo $friend_user['id']; ?>">
-                <div class="user-image-wrap">
-                  <div class="image-wrap">
-                    <img src="_pics/_users/<?php echo $friend_user['image']; ?>" />
-                  </div>
-                </div>
-              </a>
+
 
             </div>
 
@@ -87,6 +115,7 @@ if(!is_logged_in())
 
           <?php
               //endif;
+              $friend_count++;
             endforeach;
           ?>
         </div>

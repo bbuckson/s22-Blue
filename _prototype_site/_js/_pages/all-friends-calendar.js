@@ -49,7 +49,7 @@ allFriendsWrap.find('.block-column').each(function(){
          endMinutes    = startTime.substring(3,5);
 
          // Postion the block based on time
-         yPos = (startHour - 1) * timeslotHeight + (parseInt(startMinutes) / 60 * timeslotHeight);
+         yPos = (startHour - 1) * timeslotHeight + (parseInt(startMinutes) / 60 * timeslotHeight) + 19;
 
          // Calculate height based on length of block
          var diff = ( new Date("1970-1-1 " + endTime) - new Date("1970-1-1 " + startTime) ) / 1000 / 60 / 60;
@@ -62,28 +62,32 @@ allFriendsWrap.find('.block-column').each(function(){
      }
    )
 
-  // /*
-  //  * Show event blocks
-  //  */
-  //  $.ajax(
-  //    {
-  //      url: "_php/functions/show_event_block.php",
-  //      type: 'POST',
-  //      data: {
-  //        'event_id': block['event_id'],
-  //        'block_id': block['id'],
-  //        'user_id': this_users_id,
-  //        'full_start_time': fullStartTime,
-  //        'full_end_time': fullEndTime,
-  //        'y_pos': yPos,
-  //        'block_height': blockHeight
-  //      }
-  //    }
-  //  ).done(
-  //    function(results){
-  //      blocksWrap.find('.block-column').append(results);
-  //      $('.block[data-id="' + id + '"]').css({"top": yPos + "px", "height": blockHeight + "px"});
-  //    }
-  //  )
 
+});
+
+
+
+/*
+ * Position user image wraps at the top
+ */
+$('.all-content-wrap.home').find('.user-image-wrap').each(function(){
+  console.log('test');
+  var count = $(this).attr('data-count');
+  $(this).css('left', count * 180 + "px");
+});
+
+
+
+/*
+ * Have the time slots scroll with the page
+ */
+ var timeSlotsWrap = $('.all-content-wrap.home').find('.time-slots-wrap');
+ console.log('Time: ' + timeSlotsWrap.attr('class'));
+$('.all-content-wrap.home').find('.calendar-wrap').on('scroll', function(){
+  console.log('sweeeeet');
+  var scrollLeft = $(this).scrollLeft();
+
+  console.log('left: ' + scrollLeft);
+
+  // timeSlotsWrap.css('transform', 'translateX(' + scrollLeft + 'px)');
 });
