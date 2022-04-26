@@ -82,7 +82,8 @@
     data-accepted="<?php echo $user_in_event['accepted'];?>"
     style="
       top: <?php echo $_POST['y_pos'];?>px;
-      height: <?php echo $_POST['block_height'];?>
+      height: <?php echo $_POST['block_height'];?>px;
+      max-height: <?php echo $_POST['block_height'];?>px;
     "
 
     >
