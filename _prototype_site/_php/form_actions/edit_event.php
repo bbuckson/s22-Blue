@@ -239,11 +239,12 @@
        }
 
        $msg = $sending_username . ' invited you to ' . $title . '. <input type="hidden" name="sending_user_id" value="' . $sending_user_id . '" /><input type="hidden" name="event_id" value="' . $event_id . '" />';
-
+       $notification_type = "event_request";
      }
      else
      {
        $msg = $sending_username . ' has updated ' . $title . '. <input type="hidden" name="sending_user_id" value="' . $sending_user_id . '" /><input type="hidden" name="event_id" value="' . $event_id . '" />';
+      $notification_type = "event_updated";
      }
 
 
@@ -257,7 +258,7 @@
       * Insert notification
       */
 
-      $notification_type = "event_request";
+
       $time_recieved = date('Y-m-d H:i:s');
 
       $data = $conn->prepare('INSERT INTO notifications (type,	user_id,	time_recieved,	message, sender_user_id, event_id, users_in_event_id) VALUES (:type,	:user_id,	:time_recieved, :message, :sender_user_id, :event_id, :users_in_event_id)');

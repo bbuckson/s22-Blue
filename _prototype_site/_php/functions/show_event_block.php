@@ -47,7 +47,7 @@
     data-start_time="<?php echo $block['start_time'];?>"
     data-end_time="<?php echo $block['end_time'];?>"
     data-block_type="event"
-    data-accepted="<?php echo $user_in_event['accepted'];?>"
+    data-accepted="<?php echo $user_in_event[0]['accepted'];?>"
     data-event-id="<?php echo $event['id'];?>"
     style="
       top: <?php echo $_POST['y_pos'];?>px;

@@ -8,8 +8,13 @@ var relationship_type = $('input[name="relationship"]').val();
 updatePersonalCalendar(this_users_id);
 
 
-$('.time-slot-wrap').on('click', function(){
-
+$('.time-slot-wrap').on('click', function(e){
+  e.stopPropagation();
+  // If we're on the home page make the time slots do nothing
+  if($(this).closest('.calendar-wrap').hasClass('all-friends'))
+  {
+    return 0;
+  }
 
   var hour = $(this).attr('data-hour');
   var hourType = $(this).attr('data-hour-type');

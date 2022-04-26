@@ -275,6 +275,28 @@ body a:hover, p a:hover {
   width: 230px;
 }
 
+.all-content-wrap.home .block {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.all-content-wrap.home .user-image-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 150px;
+  padding: 15px 0px;
+  background: white;
+  border-radius: 0px 0px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.all-content-wrap.home .user-image-wrap img {
+  border-radius: 80px;
+  object-fit: cover;
+  width: 45px;
+  height: 45px;
+}
+
 input {
   outline: none;
 }
@@ -432,7 +454,7 @@ textarea {
 .blocks-wrap .block.event .attendee-images .img-wrap {
   border-radius: 100px;
   border: solid 3px #bebebe;
-  max-height: 32px;
+  max-height: 42px;
 }
 .blocks-wrap .block.event .attendee-images .img-wrap:nth-child(2) {
   transform: translateX(-10px);
@@ -441,8 +463,10 @@ textarea {
   transform: translateX(-20px);
 }
 .blocks-wrap .block.event .attendee-images .img-wrap img {
-  width: 25px;
-  border-radius: 100px;
+  border-radius: 80px;
+  object-fit: cover;
+  width: 35px;
+  height: 35px;
 }
 .blocks-wrap .block .times {
   font-size: 10px;
@@ -509,6 +533,7 @@ img.icon {
   border-radius: 80px;
   height: 72px;
   width: 72px;
+  object-fit: cover;
 }
 .bottom-bar .user-info-wrap .username {
   color: white;
@@ -528,6 +553,10 @@ img.icon {
 }
 .user-menu-wrap .menu-wrap-header img {
   margin-right: 15px;
+  border-radius: 80px;
+  object-fit: cover;
+  width: 45px;
+  height: 45px;
 }
 
 .menu {
@@ -623,6 +652,10 @@ img.icon {
 }
 .friends-menu-wrap .friends-list-wrap .item-wrap img {
   margin-right: 15px;
+  border-radius: 80px;
+  object-fit: cover;
+  width: 45px;
+  height: 45px;
 }
 
 .overlay-wrap {
@@ -738,6 +771,10 @@ img.icon {
 }
 .menu.menu.notifications-menu-wrap .item .content-wrap img {
   margin-right: 15px;
+  border-radius: 80px;
+  object-fit: cover;
+  width: 45px;
+  height: 45px;
 }
 .menu.menu.notifications-menu-wrap .item .accept-reject-row {
   display: flex;
@@ -851,6 +888,10 @@ img.icon {
 }
 .add-friend-popup .row.friend-results .item .icon {
   margin-right: 20px;
+  border-radius: 80px;
+  object-fit: cover;
+  width: 45px;
+  height: 45px;
 }
 
 /*# sourceMappingURL=main.css.map */

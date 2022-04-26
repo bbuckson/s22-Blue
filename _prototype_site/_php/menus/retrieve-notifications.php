@@ -48,15 +48,16 @@
             </div>
           </div>
 
-          <div class="accept-reject-row">
-            <div class="button accept" data-value="accept">
-              Accept
+          <?php if($item['type'] != "event_updated") : ?>
+            <div class="accept-reject-row">
+              <div class="button accept" data-value="accept">
+                Accept
+              </div>
+              <div class="button reject" data-value="reject">
+                Remove
+              </div>
             </div>
-            <div class="button reject" data-value="reject">
-              Remove
-            </div>
-          </div>
-
+          <?php endif; ?>
         </div>
 
 <?php

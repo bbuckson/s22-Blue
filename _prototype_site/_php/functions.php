@@ -153,3 +153,48 @@ function get_notification($notification_id)
   if($data->rowCount() > 0)
     return $arr[0];
 }
+
+
+
+
+/*
+ * Get all friends
+ */
+
+function get_all_friends()
+{
+  $conn = db_connect();
+
+  $user_id = $_SESSION['user_id'];
+
+  $data = $conn->prepare('SELECT * FROM friends WHERE user_id_1 = :user_id');
+  $data->bindParam(':user_id', $user_id);
+
+  $data->execute();
+
+  $arr = $data->fetchAll(PDO::FETCH_ASSOC);
+
+  if($data->rowCount() > 0)
+    return $arr;
+}
+
+
+
+/*
+ * Get block row with their id as parameter
+ */
+
+function get_users_block($user_id)
+{
+  $conn = db_connect();
+
+  $data = $conn->prepare('SELECT * FROM blocks WHERE user_id = :id');
+  $data->bindParam(':id', $user_id);
+
+  $data->execute();
+
+  $arr = $data->fetchAll(PDO::FETCH_ASSOC);
+
+  if($data->rowCount() > 0)
+    return $arr[0];
+}

@@ -20,7 +20,7 @@ if(!is_logged_in())
 
 
 
-    <input type="hidden" name="this_users_id" value="<?php echo $_SESSION['user_id']; ?>" />
+    <!-- <input type="hidden" name="this_users_id" value="<?php //echo $_SESSION['user_id']; ?>" /> -->
     <input type="hidden" name="my_user_id" value="<?php echo $_SESSION['user_id']; ?>" />
 
     <div class="all-content-wrap home">
@@ -37,11 +37,11 @@ if(!is_logged_in())
           $date_formatted = date("Y-m-d");
         ?>
 
-        <div class="blocks-wrap">
+        <!-- <div class="blocks-wrap">
           <div class="block-column">
 
           </div>
-          <!-- <div class="block free">
+          <div class="block free">
             <div class="title">
               Free
             </div>
@@ -56,7 +56,39 @@ if(!is_logged_in())
             <div class="times">
               4:00 - 11
             </div>
-          </div> -->
+          </div>
+        </div> -->
+
+
+        <div class="blocks-wrap">
+
+          <?php
+            $friends_list = get_all_friends();
+
+            foreach ($friends_list as $friend) :
+              //if(get_users_block($friend['user_id_2']) !== null) :
+                $friend_user = get_user($friend['user_id_2']);
+          ?>
+            <div class="block-column">
+
+              <input type="hidden" name="friend_id" value="<?php echo $friend['user_id_2']; ?>" />
+
+              <a href="calendar.php?uid=<?php echo $friend_user['id']; ?>">
+                <div class="user-image-wrap">
+                  <div class="image-wrap">
+                    <img src="_pics/_users/<?php echo $friend_user['image']; ?>" />
+                  </div>
+                </div>
+              </a>
+
+            </div>
+
+
+
+          <?php
+              //endif;
+            endforeach;
+          ?>
         </div>
 
 
@@ -67,10 +99,14 @@ if(!is_logged_in())
 
 
         <!-- Time Slots -->
+        <div class="time-slots-wrap">
+
+
         <?php
           for($i = 1; $i < 13; $i++) :
         ?>
-          <div class="time-slot-wrap" data-hour="<?php echo $i; ?>" data-hour-type="AM" data-open-popup="new-block">
+          <!-- <div class="time-slot-wrap" data-hour="<?php //echo $i; ?>" data-hour-type="AM" data-open-popup="new-block"> -->
+          <div class="time-slot-wrap" data-hour="<?php echo $i; ?>" data-hour-type="AM" >
             <div class="time-text">
               <?php echo $i . ' AM'; ?>
             </div>
@@ -83,7 +119,8 @@ if(!is_logged_in())
         <?php
           for($i = 1; $i < 13; $i++) :
         ?>
-          <div class="time-slot-wrap" data-hour="<?php echo $i + 12; ?>" data-hour-type="PM" data-open-popup="new-block">
+          <!-- <div class="time-slot-wrap" data-hour="<?php //echo $i + 12; ?>" data-hour-type="PM" data-open-popup="new-block"> -->
+          <div class="time-slot-wrap" data-hour="<?php echo $i + 12; ?>" data-hour-type="PM" >
             <div class="time-text">
               <?php echo $i . ' PM'; ?>
             </div>
@@ -92,6 +129,9 @@ if(!is_logged_in())
             </div>
           </div>
         <?php endfor; ?>
+        </div>
+
+
       </div>
 
 
