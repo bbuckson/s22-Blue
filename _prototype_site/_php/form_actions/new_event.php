@@ -113,6 +113,31 @@
    }
 
 
+
+   $accepted = 1;
+   $data = $conn->prepare('INSERT INTO users_in_event (receiving_user_id, sending_user_id, event_id, accepted)
+                           VALUES (:receiving_user_id, :sending_user_id, :event_id, :accepted)');
+   $data->bindParam(':receiving_user_id', $_SESSION['user_id']);
+   $data->bindParam(':sending_user_id', $_SESSION['user_id']);
+   $data->bindParam(':event_id', $event_id);
+   $data->bindParam(':accepted', $accepted);
+
+
+   if($data->execute())
+   {
+
+   }
+   else
+   {
+     print_r($data->errorInfo());
+     echo "not nice";
+   }
+
+
+
+
+
+
   /*
    * Insert Notification and Block for each person invited
    */
@@ -126,27 +151,62 @@
      // echo $msg;
      $conn = db_connect();
 
-     $notification_type = "event_request";
-     $time_recieved = date('Y-m-d H:i:s');
+
+
+     /*
+      * Insert users_in_event for each attendee
+      *
+      * This table is to keep track of who's invited to an event and if they have accepted
+      */
+
+     $data = $conn->prepare('INSERT INTO users_in_event (receiving_user_id, sending_user_id, event_id)
+                             VALUES (:receiving_user_id, :sending_user_id, :event_id)');
+     $data->bindParam(':receiving_user_id', $receiving_user_id);
+     $data->bindParam(':sending_user_id', $sending_user_id);
+     $data->bindParam(':event_id', $event_id);
+
+
+     if($data->execute())
+     {
+
+     }
+     else
+     {
+       echo "not nice";
+     }
+
+
+
+     /*
+      * Get id of users in event
+      */
+     $users_in_event_id = $conn->lastInsertId();
+
+
 
 
      /*
       * Insert notification
       */
-     $data = $conn->prepare('INSERT INTO notifications (type,	user_id,	time_recieved,	message, sender_user_id) VALUES (:type,	:user_id,	:time_recieved, :message, :sender_user_id)');
-     $data->bindParam(':type', $notification_type);
-     $data->bindParam(':user_id', $receiving_user_id);
-     $data->bindParam(':time_recieved', $time_recieved);
-     $data->bindParam(':message', $msg);
-     $data->bindParam(':sender_user_id', $sending_user_id);
+      $notification_type = "event_request";
+      $time_recieved = date('Y-m-d H:i:s');
 
-     if($data->execute())
-     {
-     }
-     else
-     {
+      $data = $conn->prepare('INSERT INTO notifications (type,	user_id,	time_recieved,	message, sender_user_id, event_id, users_in_event_id) VALUES (:type,	:user_id,	:time_recieved, :message, :sender_user_id, :event_id, :users_in_event_id)');
+      $data->bindParam(':type', $notification_type);
+      $data->bindParam(':user_id', $receiving_user_id);
+      $data->bindParam(':time_recieved', $time_recieved);
+      $data->bindParam(':message', $msg);
+      $data->bindParam(':sender_user_id', $sending_user_id);
+      $data->bindParam(':event_id', $event_id);
+      $data->bindParam(':users_in_event_id', $users_in_event_id);
+
+      if($data->execute())
+      {
+      }
+      else
+      {
        echo "nope";
-     }
+      }
 
 
 
@@ -176,27 +236,7 @@
 
 
 
-     /*
-      * Insert users_in_event for each attendee
-      *
-      * This table is to keep track of who's invited to an event and if they have accepted
-      */
 
-     $data = $conn->prepare('INSERT INTO users_in_event (receiving_user_id, sending_user_id, event_id)
-                             VALUES (:receiving_user_id, :sending_user_id, :event_id)');
-     $data->bindParam(':receiving_user_id', $receiving_user_id);
-     $data->bindParam(':sending_user_id', $sending_user_id);
-     $data->bindParam(':event_id', $event_id);
-
-
-     if($data->execute())
-     {
-
-     }
-     else
-     {
-       echo "not nice";
-     }
 
 
    }

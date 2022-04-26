@@ -158,7 +158,6 @@ function updatePersonalCalendar(user_id)
           }
         ).done(
           function(results){
-            console.log(results);
             blocksWrap.find('.block-column').append(results);
             $('.block[data-id="' + id + '"]').css({"top": yPos + "px", "height": blockHeight + "px"});
           }

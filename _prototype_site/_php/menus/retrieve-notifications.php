@@ -32,6 +32,10 @@
         {
           $attributes .= ' data-sender="' . $item['sender_user_id'] . '"';
         }
+        if($item['type'] = "event_request")
+        {
+          $attributes .= ' data-users-in-event-id="' . $item['users_in_event_id'] . '" data-event-id="' . $item['event_id'] . '"';
+        }
 ?>
 
 
