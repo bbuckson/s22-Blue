@@ -21,6 +21,20 @@
 
   $user_in_event = get_users_in_event($event['id'], $_POST['user_id']);
 
+  /*
+   * Get attendees
+   */
+  $data = $conn->prepare('SELECT * FROM users_in_event WHERE event_id = :eid');
+  $data->bindParam(':eid', $_POST['event_id']);
+
+  if($data->execute())
+  {
+    $attendees_arr = $data->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($attendees_arr as $attendee) {
+      $attendees[] = get_user($attendee['receiving_user_id']);
+    }
+  }
+
   // Only show info on block if this user is us
   if($user_id == $my_id):
 ?>
@@ -39,9 +53,19 @@
       max-height: <?php echo $_POST['block_height'];?>px;
     "
     >
-
     <div class="title"><?php echo $event['title']; ?></div>
     <div class="times"><?php echo $_POST['full_start_time'];?> - <?php echo $_POST['full_end_time'];?></div>
+    <div class="attendee-images">
+
+        <?php
+          foreach ($attendees as $attendee) {
+            echo '<div class="img-wrap">';
+              echo '<img src="_pics/_users/' . $attendee['image'] . '" />';
+            echo '</div>';
+          }
+        ?>
+
+    </div>
     <div class="description"><?php echo $event['description']; ?></div>
   </div>
 <?php
@@ -65,6 +89,16 @@
 
     <div class="title">Event</div>
     <div class="times"><?php echo $_POST['full_start_time'];?> - <?php echo $_POST['full_end_time'];?></div>
+    <div class="attendee-images">
+      <?php
+        foreach ($attendees as $attendee) {
+          echo '<div class="img-wrap">';
+            echo '<img src="_pics/_users/' . $attendee['image'] . '" />';
+          echo '</div>';
+        }
+      ?>
+
+    </div>
   </div>
 
 <?php endif; ?>

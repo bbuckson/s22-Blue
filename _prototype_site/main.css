@@ -400,6 +400,7 @@ textarea {
   font-size: 14px;
   min-width: 150px;
   width: 150px;
+  overflow: hidden;
   border-radius: 6px;
 }
 .blocks-wrap .block.free {
@@ -413,6 +414,28 @@ textarea {
 }
 .blocks-wrap .block.event[data-accepted="0"] {
   background: rgba(52, 171, 244, 0.7);
+}
+.blocks-wrap .block.event .attendee-images {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+.blocks-wrap .block.event .attendee-images .img-wrap {
+  border-radius: 100px;
+  border: solid 3px #bebebe;
+  max-height: 32px;
+}
+.blocks-wrap .block.event .attendee-images .img-wrap:nth-child(2) {
+  transform: translateX(-10px);
+}
+.blocks-wrap .block.event .attendee-images .img-wrap:nth-child(3) {
+  transform: translateX(-20px);
+}
+.blocks-wrap .block.event .attendee-images .img-wrap img {
+  width: 25px;
+  border-radius: 100px;
 }
 .blocks-wrap .block .times {
   font-size: 10px;

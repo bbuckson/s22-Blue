@@ -114,26 +114,6 @@
 
 
 
-   $accepted = 1;
-   $data = $conn->prepare('INSERT INTO users_in_event (receiving_user_id, sending_user_id, event_id, accepted)
-                           VALUES (:receiving_user_id, :sending_user_id, :event_id, :accepted)');
-   $data->bindParam(':receiving_user_id', $_SESSION['user_id']);
-   $data->bindParam(':sending_user_id', $_SESSION['user_id']);
-   $data->bindParam(':event_id', $event_id);
-   $data->bindParam(':accepted', $accepted);
-
-
-   if($data->execute())
-   {
-
-   }
-   else
-   {
-     print_r($data->errorInfo());
-     echo "not nice";
-   }
-
-
 
 
 
