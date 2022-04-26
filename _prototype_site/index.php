@@ -28,7 +28,8 @@ if(!is_logged_in())
 
       <!-- Tob Nav bar -->
       <?php show_top_bar($root); ?>
-
+      <!-- Bottom Nav Bar -->
+      <?php show_bottom_bar($root); ?>
 
 
       <!-- Calendar -->
@@ -61,7 +62,7 @@ if(!is_logged_in())
           ?>
         </div>
 
-        
+
 
         <?php
           $curr_date = date("D M jS");
@@ -177,8 +178,7 @@ if(!is_logged_in())
       </div>
 
 
-      <!-- Bottom Nav Bar -->
-      <?php show_bottom_bar($root); ?>
+
 
 
 
