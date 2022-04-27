@@ -309,6 +309,20 @@ body a:hover, p a:hover {
   width: 45px;
   height: 45px;
 }
+.all-content-wrap.home .stuck-times-wrap {
+  position: sticky;
+  left: 15px;
+  background: white;
+}
+.all-content-wrap.home .stuck-times-wrap .time-slot-wrap {
+  width: 94vw;
+}
+.all-content-wrap.home .time-slots-wrap {
+  display: none;
+}
+.all-content-wrap.home .time-slot-wrap .time-text.hidden {
+  color: rgba(0, 0, 0, 0);
+}
 
 input {
   outline: none;
@@ -384,7 +398,8 @@ textarea {
   top: 20px;
   transform: translateX(-50%);
 }
-.calendar-wrap .time-slot-wrap {
+
+.time-slot-wrap {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -393,7 +408,7 @@ textarea {
   width: 94vw;
   border-bottom: solid 1px gainsboro;
 }
-.calendar-wrap .time-slot-wrap .time-text {
+.time-slot-wrap .time-text {
   color: gainsboro;
   padding: 20px 0px;
   text-align: center;
@@ -401,10 +416,9 @@ textarea {
   white-space: nowrap;
   font-weight: bold;
 }
-.calendar-wrap .time-slot-wrap .time-slot {
+.time-slot-wrap .time-slot {
   width: 100%;
 }
-
 .blocks-wrap {
   display: flex;
   flex-direction: row;

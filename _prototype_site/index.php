@@ -26,6 +26,7 @@ if(!is_logged_in())
     <div class="all-content-wrap home">
 
 
+
       <!-- Tob Nav bar -->
       <?php show_top_bar($root); ?>
       <!-- Bottom Nav Bar -->
@@ -37,6 +38,7 @@ if(!is_logged_in())
 
         <!-- user image are -->
         <div class="friends-image-wrap">
+
 
           <?php
             $friends_list = get_all_friends();
@@ -128,8 +130,9 @@ if(!is_logged_in())
         </div>
 
 
+        <!-- Times to be stuck on the side -->
         <!-- Time Slots -->
-        <div class="time-slots-wrap">
+        <div class="stuck-times-wrap">
 
 
         <?php
@@ -137,7 +140,7 @@ if(!is_logged_in())
         ?>
           <!-- <div class="time-slot-wrap" data-hour="<?php //echo $i; ?>" data-hour-type="AM" data-open-popup="new-block"> -->
           <div class="time-slot-wrap" data-hour="<?php echo $i; ?>" data-hour-type="AM" >
-            <div class="time-text">
+            <div class="time-text ">
               <?php echo $i . ' AM'; ?>
             </div>
             <div class="time-slot">
@@ -151,7 +154,41 @@ if(!is_logged_in())
         ?>
           <!-- <div class="time-slot-wrap" data-hour="<?php //echo $i + 12; ?>" data-hour-type="PM" data-open-popup="new-block"> -->
           <div class="time-slot-wrap" data-hour="<?php echo $i + 12; ?>" data-hour-type="PM" >
-            <div class="time-text">
+            <div class="time-text ">
+              <?php echo $i . ' PM'; ?>
+            </div>
+            <div class="time-slot">
+
+            </div>
+          </div>
+        <?php endfor; ?>
+        </div>
+
+
+        <!-- Time Slots -->
+        <div class="time-slots-wrap">
+
+
+        <?php
+          for($i = 1; $i < 13; $i++) :
+        ?>
+          <!-- <div class="time-slot-wrap" data-hour="<?php //echo $i; ?>" data-hour-type="AM" data-open-popup="new-block"> -->
+          <div class="time-slot-wrap" data-hour="<?php echo $i; ?>" data-hour-type="AM" >
+            <div class="time-text hidden">
+              <?php echo $i . ' AM'; ?>
+            </div>
+            <div class="time-slot">
+
+            </div>
+          </div>
+        <?php endfor; ?>
+
+        <?php
+          for($i = 1; $i < 13; $i++) :
+        ?>
+          <!-- <div class="time-slot-wrap" data-hour="<?php //echo $i + 12; ?>" data-hour-type="PM" data-open-popup="new-block"> -->
+          <div class="time-slot-wrap" data-hour="<?php echo $i + 12; ?>" data-hour-type="PM" >
+            <div class="time-text hidden">
               <?php echo $i . ' PM'; ?>
             </div>
             <div class="time-slot">
