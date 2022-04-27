@@ -1,4 +1,4 @@
-$(document).ready(function(){  // The id of the user whose calendar you are trying viee
+$(document).ready(function(){   // The id of the user whose calendar you are trying viee
 if($('input[name="this_users_id"]').length)
   var this_users_id = $('input[name="this_users_id"]').val();
 
@@ -454,7 +454,7 @@ suggestATimeWrap.on('click', '.search-friends-wrap > .item', function(){
   // Reset
   suggestATimeWrap.find('.search-friends-wrap').removeClass('show');
   suggestATimeWrap.find('.search-friends-wrap').html();
-  suggestATimeWrap.find('.new-event-add-friends').val('');
+  suggestATimeWrap.find('.suggest-a-time-add-a-friend').val('');
 
   // Add checkbox for user selected
   suggestATimeWrap.find('.hidden-checkboxes').append('<input type="checkbox" name="invitees[]" value="' + userId + '" checked="checked" />');
@@ -483,22 +483,69 @@ suggestATimeWrap.on('click', '.search-friends-wrap > .item', function(){
      suggestATimeWrap.find('.error-msg').html('Look for some friends to invite!');
    }
 
+   // Gather rest of data
+   var startDate = suggestATimeWrap.find('input[name="date"]').val();
+   var startTime = suggestATimeWrap.find('input[name="start_time"]').val();
+   var endTime = suggestATimeWrap.find('input[name="end_time"]').val();
+
    $.ajax(
      {
        url: "_php/form_actions/suggest-a-time.php",
        type: 'POST',
        data: {
-         'attendees': attendees
+         'attendees': attendees,
+         'start_date': startDate,
+         'start_time': startTime,
+         'end_time': endTime
        }
      }
    ).done(
      function(results){
-       console.log(results);
+       //console.log(results);
+       suggestATimeWrap.find('.results-wrap > .content-wrap').html(results);
      }
    );
 
 
  });
+
+
+
+
+ /*
+  * When you click on friends free block
+  */
+  $('.results-wrap').on('click', '.button.time', function(){
+    console.log('color');
+
+
+
+    var startTime = $(this).attr('data-start_time').substring(0,8);
+    var endTime = $(this).attr('data-end_time').substring(0,8);
+    // // var hourType = $(this).attr('data-hour-type');
+    var currDate = $(this).attr('data-curr_date');
+
+
+    // Transfer attendees from suggest a time and
+    var attendees = $('.overlay-wrap.suggest-a-time').find('.friends-coming').html();
+    var checkboxes = $('.overlay-wrap.suggest-a-time').find('.hidden-checkboxes').html();
+
+    $('.overlay-wrap.show').removeClass('show');
+
+    var popupWrap = $('.overlay-wrap.new-event');
+
+
+    $('.overlay-wrap.new-event').find('input[name="start_time"]').val(startTime);
+    $('.overlay-wrap.new-event').find('input[name="end_time"]').val(endTime);
+    $('.overlay-wrap.new-event').find('input[name="date"]').val(currDate);
+
+    $('.overlay-wrap.new-event').find('.row.friends-coming').html(attendees);
+    $('.overlay-wrap.new-event').find('.hidden-checkboxes').html(checkboxes);
+
+
+    popupWrap.addClass('show');
+
+  });
 // The id of the user whose calendar you are trying vie
 var this_users_id = $('input[name="this_users_id"]').val();
 // Your id
@@ -1014,4 +1061,4 @@ function fetchBlocks(user_id) {
   );
 
 }
-});                                                                                
+});                                                                                   

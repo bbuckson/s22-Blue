@@ -1,0 +1,52 @@
+.overlay-wrap.suggest-a-time
+
+  .results-wrap
+    .content-wrap
+      @include flex(row, stretch, flex-start, nowrap)
+      overflow-x: auto
+      width: 100%
+
+      .column
+        @include flex(column, stretch, flex-start, nowrap)
+
+        .item
+          @include flex(row, center, center, nowrap)
+          padding: 10px
+          height: 65px
+
+          &:first-child
+            height: 58px
+
+          &:not(:last-child)
+            border-bottom: solid 1px $lighter-gray
+
+          img
+            border-radius: 80px
+            object-fit: cover
+            width: 45px
+            height: 45px
+
+          .button
+            background: $light-blue
+            font-size: 14px
+            padding: 10px
+
+
+  .block
+    padding: 10px
+    color: #fff
+    font-size: 14px
+
+
+    overflow: hidden
+
+    border-radius: 6px
+
+    &.free
+      background: $green
+
+    &.blocked
+      background: $red
+
+    &.event
+      background: $blue

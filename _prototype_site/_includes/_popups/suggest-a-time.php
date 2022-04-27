@@ -6,6 +6,21 @@
 
     </p>
 
+    <div class="row">
+      <span>Date</span>
+      <input type="date" name="date" required />
+    </div>
+
+    <div class="row">
+      <span>Start Time</span>
+      <input type="time" name="start_time" />
+    </div>
+
+    <div class="row">
+      <span>End Time</span>
+      <input type="time" name="end_time" />
+    </div>
+
     <div class="single-label">
       Who should be there?
     </div>
@@ -26,6 +41,18 @@
     <div class="hidden-checkboxes">
 
     </div>
+
+
+    <!-- Results -->
+    <div class="results-wrap">
+      <div class="single-label">
+        Results
+      </div>
+      <div class="content-wrap">
+
+      </div>
+    </div>
+
 
 
     <div class="row">

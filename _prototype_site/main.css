@@ -937,4 +937,63 @@ img.icon {
   height: 45px;
 }
 
+.overlay-wrap.suggest-a-time .results-wrap .content-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 100%;
+}
+.overlay-wrap.suggest-a-time .results-wrap .content-wrap .column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+.overlay-wrap.suggest-a-time .results-wrap .content-wrap .column .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 10px;
+  height: 65px;
+}
+.overlay-wrap.suggest-a-time .results-wrap .content-wrap .column .item:first-child {
+  height: 58px;
+}
+.overlay-wrap.suggest-a-time .results-wrap .content-wrap .column .item:not(:last-child) {
+  border-bottom: solid 1px #bebebe;
+}
+.overlay-wrap.suggest-a-time .results-wrap .content-wrap .column .item img {
+  border-radius: 80px;
+  object-fit: cover;
+  width: 45px;
+  height: 45px;
+}
+.overlay-wrap.suggest-a-time .results-wrap .content-wrap .column .item .button {
+  background: #5fbdf6;
+  font-size: 14px;
+  padding: 10px;
+}
+.overlay-wrap.suggest-a-time .block {
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+.overlay-wrap.suggest-a-time .block.free {
+  background: #4efacd;
+}
+.overlay-wrap.suggest-a-time .block.blocked {
+  background: #ff7f73;
+}
+.overlay-wrap.suggest-a-time .block.event {
+  background: #34abf4;
+}
+
 /*# sourceMappingURL=main.css.map */
