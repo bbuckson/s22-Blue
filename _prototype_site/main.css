@@ -694,7 +694,7 @@ img.icon {
   opacity: 1;
   max-height: 100vh;
 }
-.overlay-wrap .content-wrap, .overlay-wrap .set-block-wrap, .overlay-wrap .edit-block-wrap, .overlay-wrap .set-event-wrap, .overlay-wrap .edit-event-wrap {
+.overlay-wrap .content-wrap, .overlay-wrap .set-block-wrap, .overlay-wrap .edit-block-wrap, .overlay-wrap .set-event-wrap, .overlay-wrap .edit-event-wrap, .overlay-wrap .suggest-a-time-wrap {
   padding: 20px;
   background: white;
   border-radius: 10px;
@@ -702,14 +702,14 @@ img.icon {
   color: #474747;
   font-size: 14px;
 }
-.overlay-wrap .content-wrap > *:not(:last-child), .overlay-wrap .set-block-wrap > *:not(:last-child), .overlay-wrap .edit-block-wrap > *:not(:last-child), .overlay-wrap .set-event-wrap > *:not(:last-child), .overlay-wrap .edit-event-wrap > *:not(:last-child) {
+.overlay-wrap .content-wrap > *:not(:last-child), .overlay-wrap .set-block-wrap > *:not(:last-child), .overlay-wrap .edit-block-wrap > *:not(:last-child), .overlay-wrap .set-event-wrap > *:not(:last-child), .overlay-wrap .edit-event-wrap > *:not(:last-child), .overlay-wrap .suggest-a-time-wrap > *:not(:last-child) {
   margin-bottom: 10px;
 }
-.overlay-wrap .content-wrap .single-label, .overlay-wrap .set-block-wrap .single-label, .overlay-wrap .edit-block-wrap .single-label, .overlay-wrap .set-event-wrap .single-label, .overlay-wrap .edit-event-wrap .single-label {
+.overlay-wrap .content-wrap .single-label, .overlay-wrap .set-block-wrap .single-label, .overlay-wrap .edit-block-wrap .single-label, .overlay-wrap .set-event-wrap .single-label, .overlay-wrap .edit-event-wrap .single-label, .overlay-wrap .suggest-a-time-wrap .single-label {
   width: 100%;
   text-align: center;
 }
-.overlay-wrap .content-wrap .row, .overlay-wrap .set-block-wrap .row, .overlay-wrap .edit-block-wrap .row, .overlay-wrap .set-event-wrap .row, .overlay-wrap .edit-event-wrap .row {
+.overlay-wrap .content-wrap .row, .overlay-wrap .set-block-wrap .row, .overlay-wrap .edit-block-wrap .row, .overlay-wrap .set-event-wrap .row, .overlay-wrap .edit-event-wrap .row, .overlay-wrap .suggest-a-time-wrap .row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -717,42 +717,42 @@ img.icon {
   flex-wrap: nowrap;
   width: 100%;
 }
-.overlay-wrap .content-wrap .row:not(:last-of-type), .overlay-wrap .set-block-wrap .row:not(:last-of-type), .overlay-wrap .edit-block-wrap .row:not(:last-of-type), .overlay-wrap .set-event-wrap .row:not(:last-of-type), .overlay-wrap .edit-event-wrap .row:not(:last-of-type) {
+.overlay-wrap .content-wrap .row:not(:last-of-type), .overlay-wrap .set-block-wrap .row:not(:last-of-type), .overlay-wrap .edit-block-wrap .row:not(:last-of-type), .overlay-wrap .set-event-wrap .row:not(:last-of-type), .overlay-wrap .edit-event-wrap .row:not(:last-of-type), .overlay-wrap .suggest-a-time-wrap .row:not(:last-of-type) {
   margin-bottom: 15px;
 }
-.overlay-wrap .content-wrap .close-popup, .overlay-wrap .set-block-wrap .close-popup, .overlay-wrap .edit-block-wrap .close-popup, .overlay-wrap .set-event-wrap .close-popup, .overlay-wrap .edit-event-wrap .close-popup {
+.overlay-wrap .content-wrap .close-popup, .overlay-wrap .set-block-wrap .close-popup, .overlay-wrap .edit-block-wrap .close-popup, .overlay-wrap .set-event-wrap .close-popup, .overlay-wrap .edit-event-wrap .close-popup, .overlay-wrap .suggest-a-time-wrap .close-popup {
   width: 100%;
   text-align: center;
 }
-.overlay-wrap .content-wrap .button, .overlay-wrap .set-block-wrap .button, .overlay-wrap .edit-block-wrap .button, .overlay-wrap .set-event-wrap .button, .overlay-wrap .edit-event-wrap .button {
+.overlay-wrap .content-wrap .button, .overlay-wrap .set-block-wrap .button, .overlay-wrap .edit-block-wrap .button, .overlay-wrap .set-event-wrap .button, .overlay-wrap .edit-event-wrap .button, .overlay-wrap .suggest-a-time-wrap .button {
   color: white;
   flex: 1;
   padding: 10px 0px;
   text-align: center;
   font-size: 14px;
 }
-.overlay-wrap .content-wrap .button:first-child, .overlay-wrap .set-block-wrap .button:first-child, .overlay-wrap .edit-block-wrap .button:first-child, .overlay-wrap .set-event-wrap .button:first-child, .overlay-wrap .edit-event-wrap .button:first-child {
+.overlay-wrap .content-wrap .button:first-child, .overlay-wrap .set-block-wrap .button:first-child, .overlay-wrap .edit-block-wrap .button:first-child, .overlay-wrap .set-event-wrap .button:first-child, .overlay-wrap .edit-event-wrap .button:first-child, .overlay-wrap .suggest-a-time-wrap .button:first-child {
   margin-right: 5px;
 }
-.overlay-wrap .content-wrap .button:not(.active), .overlay-wrap .set-block-wrap .button:not(.active), .overlay-wrap .edit-block-wrap .button:not(.active), .overlay-wrap .set-event-wrap .button:not(.active), .overlay-wrap .edit-event-wrap .button:not(.active) {
+.overlay-wrap .content-wrap .button:not(.active), .overlay-wrap .set-block-wrap .button:not(.active), .overlay-wrap .edit-block-wrap .button:not(.active), .overlay-wrap .set-event-wrap .button:not(.active), .overlay-wrap .edit-event-wrap .button:not(.active), .overlay-wrap .suggest-a-time-wrap .button:not(.active) {
   background: gainsboro;
 }
-.overlay-wrap .content-wrap .button.free.active, .overlay-wrap .set-block-wrap .button.free.active, .overlay-wrap .edit-block-wrap .button.free.active, .overlay-wrap .set-event-wrap .button.free.active, .overlay-wrap .edit-event-wrap .button.free.active {
+.overlay-wrap .content-wrap .button.free.active, .overlay-wrap .set-block-wrap .button.free.active, .overlay-wrap .edit-block-wrap .button.free.active, .overlay-wrap .set-event-wrap .button.free.active, .overlay-wrap .edit-event-wrap .button.free.active, .overlay-wrap .suggest-a-time-wrap .button.free.active {
   background: #4efacd;
 }
-.overlay-wrap .content-wrap .button.blocked.active, .overlay-wrap .set-block-wrap .button.blocked.active, .overlay-wrap .edit-block-wrap .button.blocked.active, .overlay-wrap .set-event-wrap .button.blocked.active, .overlay-wrap .edit-event-wrap .button.blocked.active {
+.overlay-wrap .content-wrap .button.blocked.active, .overlay-wrap .set-block-wrap .button.blocked.active, .overlay-wrap .edit-block-wrap .button.blocked.active, .overlay-wrap .set-event-wrap .button.blocked.active, .overlay-wrap .edit-event-wrap .button.blocked.active, .overlay-wrap .suggest-a-time-wrap .button.blocked.active {
   background: #ff7f73;
 }
-.overlay-wrap .content-wrap .button.submit, .overlay-wrap .set-block-wrap .button.submit, .overlay-wrap .edit-block-wrap .button.submit, .overlay-wrap .set-event-wrap .button.submit, .overlay-wrap .edit-event-wrap .button.submit {
+.overlay-wrap .content-wrap .button.submit, .overlay-wrap .set-block-wrap .button.submit, .overlay-wrap .edit-block-wrap .button.submit, .overlay-wrap .set-event-wrap .button.submit, .overlay-wrap .edit-event-wrap .button.submit, .overlay-wrap .suggest-a-time-wrap .button.submit {
   background: #34abf4;
 }
-.overlay-wrap .content-wrap .button.delete, .overlay-wrap .set-block-wrap .button.delete, .overlay-wrap .edit-block-wrap .button.delete, .overlay-wrap .set-event-wrap .button.delete, .overlay-wrap .edit-event-wrap .button.delete {
+.overlay-wrap .content-wrap .button.delete, .overlay-wrap .set-block-wrap .button.delete, .overlay-wrap .edit-block-wrap .button.delete, .overlay-wrap .set-event-wrap .button.delete, .overlay-wrap .edit-event-wrap .button.delete, .overlay-wrap .suggest-a-time-wrap .button.delete {
   background: #ff7f73;
 }
-.overlay-wrap .content-wrap input:not([type=text]), .overlay-wrap .set-block-wrap input:not([type=text]), .overlay-wrap .edit-block-wrap input:not([type=text]), .overlay-wrap .set-event-wrap input:not([type=text]), .overlay-wrap .edit-event-wrap input:not([type=text]) {
+.overlay-wrap .content-wrap input:not([type=text]), .overlay-wrap .set-block-wrap input:not([type=text]), .overlay-wrap .edit-block-wrap input:not([type=text]), .overlay-wrap .set-event-wrap input:not([type=text]), .overlay-wrap .edit-event-wrap input:not([type=text]), .overlay-wrap .suggest-a-time-wrap input:not([type=text]) {
   border: none;
 }
-.overlay-wrap .content-wrap input.search, .overlay-wrap .set-block-wrap input.search, .overlay-wrap .edit-block-wrap input.search, .overlay-wrap .set-event-wrap input.search, .overlay-wrap .edit-event-wrap input.search {
+.overlay-wrap .content-wrap input.search, .overlay-wrap .set-block-wrap input.search, .overlay-wrap .edit-block-wrap input.search, .overlay-wrap .set-event-wrap input.search, .overlay-wrap .edit-event-wrap input.search, .overlay-wrap .suggest-a-time-wrap input.search {
   background-image: url("_pics/_icons/search.svg");
   background-repeat: no-repeat;
   background-size: 35px;
@@ -813,10 +813,10 @@ img.icon {
   background-color: #ff7f73;
 }
 
-.overlay-wrap.new-event .add-friends-wrap, .overlay-wrap.edit-event .add-friends-wrap {
+.overlay-wrap.new-event .add-friends-wrap, .overlay-wrap.edit-event .add-friends-wrap, .overlay-wrap.suggest-a-time .add-friends-wrap {
   position: relative;
 }
-.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap, .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap {
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap, .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap, .overlay-wrap.suggest-a-time .add-friends-wrap .search-friends-wrap {
   position: absolute;
   bottom: 80px;
   background: white;
@@ -825,11 +825,11 @@ img.icon {
   max-height: 0px;
   border-radius: 6px;
 }
-.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap.show, .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap.show {
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap.show, .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap.show, .overlay-wrap.suggest-a-time .add-friends-wrap .search-friends-wrap.show {
   max-height: 200px;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.29);
 }
-.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item, .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap .item {
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item, .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap .item, .overlay-wrap.suggest-a-time .add-friends-wrap .search-friends-wrap .item {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -837,18 +837,21 @@ img.icon {
   flex-wrap: nowrap;
   padding: 10px;
 }
-.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item:not(:last-child), .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap .item:not(:last-child) {
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item:not(:last-child), .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap .item:not(:last-child), .overlay-wrap.suggest-a-time .add-friends-wrap .search-friends-wrap .item:not(:last-child) {
   border-bottom: solid 1px gainsboro;
 }
-.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item img, .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap .item img {
-  height: 30px;
+.overlay-wrap.new-event .add-friends-wrap .search-friends-wrap .item img, .overlay-wrap.edit-event .add-friends-wrap .search-friends-wrap .item img, .overlay-wrap.suggest-a-time .add-friends-wrap .search-friends-wrap .item img {
   margin-right: 15px;
+  border-radius: 80px;
+  object-fit: cover;
+  width: 45px;
+  height: 45px;
 }
-.overlay-wrap.new-event .friends-coming, .overlay-wrap.edit-event .friends-coming {
+.overlay-wrap.new-event .friends-coming, .overlay-wrap.edit-event .friends-coming, .overlay-wrap.suggest-a-time .friends-coming {
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-.overlay-wrap.new-event .friends-coming .item, .overlay-wrap.edit-event .friends-coming .item {
+.overlay-wrap.new-event .friends-coming .item, .overlay-wrap.edit-event .friends-coming .item, .overlay-wrap.suggest-a-time .friends-coming .item {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -863,20 +866,27 @@ img.icon {
   margin-bottom: 4px;
   border: solid 2px #5fbdf6;
 }
-.overlay-wrap.new-event .friends-coming .item.removed, .overlay-wrap.edit-event .friends-coming .item.removed {
+.overlay-wrap.new-event .friends-coming .item.removed, .overlay-wrap.edit-event .friends-coming .item.removed, .overlay-wrap.suggest-a-time .friends-coming .item.removed {
   color: #5fbdf6;
   background: white;
 }
-.overlay-wrap.new-event .friends-coming .item[data-accepted="1"]:not(.removed), .overlay-wrap.edit-event .friends-coming .item[data-accepted="1"]:not(.removed) {
+.overlay-wrap.new-event .friends-coming .item[data-accepted="1"]:not(.removed), .overlay-wrap.edit-event .friends-coming .item[data-accepted="1"]:not(.removed), .overlay-wrap.suggest-a-time .friends-coming .item[data-accepted="1"]:not(.removed) {
   background: #34abf4;
 }
-.overlay-wrap.new-event .friends-coming .item img, .overlay-wrap.edit-event .friends-coming .item img {
+.overlay-wrap.new-event .friends-coming .item img, .overlay-wrap.edit-event .friends-coming .item img, .overlay-wrap.suggest-a-time .friends-coming .item img {
   width: 20px;
   margin-right: 6px;
   border-radius: 100px;
 }
-.overlay-wrap.new-event .hidden-checkboxes, .overlay-wrap.edit-event .hidden-checkboxes {
+.overlay-wrap.new-event .hidden-checkboxes, .overlay-wrap.edit-event .hidden-checkboxes, .overlay-wrap.suggest-a-time .hidden-checkboxes {
   display: none;
+}
+
+.add-item-menu-wrap {
+  width: 100vw;
+  left: 0px;
+  bottom: 60px;
+  border-radius: 12px 12px 0px 0px;
 }
 
 .add-friend-popup .row.friend-results {

@@ -97,7 +97,7 @@ endif;
 
 <div class="row">
   <div class="button submit" data-form="edit-event">
-    Send Invite
+    Update Event3.
   </div>
 </div>
 <div class="close-popup">

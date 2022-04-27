@@ -56,17 +56,22 @@
 
     <!-- list of friends coming -->
     <div class="row friends-coming">
+      <?php if(isset($current_user['username'])) : ?>
       <div class="item" data-accepted="1">
         <img src="_pics/_users/<?php echo $current_user['image']; ?>" />
         <div class="title">
           <?php echo $current_user['username']; ?>
         </div>
       </div>
+      <?php endif; ?>
     </div>
 
     <!-- Hold checkbox of users that are invited -->
     <div class="hidden-checkboxes">
-      <input type="checkbox" name="invitees[]" value="<?php echo $current_user['id']; ?>" checked="checked" />
+      <?php if(isset($current_user['id'])) : ?>
+        <input type="checkbox" name="invitees[]" value="<?php echo $current_user['id']; ?>" checked="checked" />
+      <?php endif; ?>
+
     </div>
 
 

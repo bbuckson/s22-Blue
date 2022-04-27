@@ -30,7 +30,6 @@ allFriendsWrap.find('.block-column').each(function(){
      }
    ).done(
      function(results){
-       //console.log(results);
        columnWrap.append(results);
 
 
@@ -71,7 +70,6 @@ allFriendsWrap.find('.block-column').each(function(){
  * Position user image wraps at the top
  */
 $('.all-content-wrap.home').find('.user-image-wrap').each(function(){
-  console.log('test');
   var count = $(this).attr('data-count');
   $(this).css('left', count * 180 + "px");
 });
@@ -82,12 +80,7 @@ $('.all-content-wrap.home').find('.user-image-wrap').each(function(){
  * Have the time slots scroll with the page
  */
  var timeSlotsWrap = $('.all-content-wrap.home').find('.time-slots-wrap');
- console.log('Time: ' + timeSlotsWrap.attr('class'));
 $('.all-content-wrap.home').find('.calendar-wrap').on('scroll', function(){
-  console.log('sweeeeet');
   var scrollLeft = $(this).scrollLeft();
-
-  console.log('left: ' + scrollLeft);
-
   // timeSlotsWrap.css('transform', 'translateX(' + scrollLeft + 'px)');
 });

@@ -382,7 +382,6 @@ $('.edit-event-wrap').on('click', '.button.submit[data-form="edit-event"]', func
     }
   ).done(
     function(results){
-      console.log(results);
       updatePersonalCalendar(this_users_id);
       $('.overlay-wrap.show').removeClass('show');
 
@@ -414,6 +413,92 @@ $('.edit-event-wrap').on('click', '.search-friends-wrap > .item', function(){
   $('.edit-event-wrap').find('.friends-coming').append('<div class="item" data-accepted="0" data-user-id="' + userId + '"><img src="' + userImage + '" /><div class="title">' + userName + '</div></div>');
 
 });
+var suggestATimeWrap = $('.suggest-a-time-wrap');
+
+/*
+ * Show suggested friends when typing
+ */
+ console.log('sweet');
+suggestATimeWrap.on('input', '.suggest-a-time-add-a-friend',function(){
+  var val = $(this).val();
+  var wrap = $(this).closest('.overlay-wrap');
+  console.log('cool');
+
+  wrap.find('.search-friends-wrap').addClass('show');
+  $.ajax(
+    {
+      url: "_php/functions/find_friend.php",
+      type: "POST",
+      data: {
+        'val': val
+      }
+    }
+  ).done(
+    function(res)
+    {
+      wrap.find('.search-friends-wrap').html(res);
+    }
+  )
+});
+
+
+
+/*
+ * On Select friend
+ */
+suggestATimeWrap.on('click', '.search-friends-wrap > .item', function(){
+  var userId = $(this).attr('data-user-id');
+  var userName = $(this).attr('data-username');
+  var userImage = $(this).find('img').attr('src');
+
+  // Reset
+  suggestATimeWrap.find('.search-friends-wrap').removeClass('show');
+  suggestATimeWrap.find('.search-friends-wrap').html();
+  suggestATimeWrap.find('.new-event-add-friends').val('');
+
+  // Add checkbox for user selected
+  suggestATimeWrap.find('.hidden-checkboxes').append('<input type="checkbox" name="invitees[]" value="' + userId + '" checked="checked" />');
+
+  // Add user to list of attendees
+  suggestATimeWrap.find('.friends-coming').append('<div class="item" data-accepted="0" data-user-id="' + userId + '"><img src="' + userImage + '" /><div class="title">' + userName + '</div></div>');
+
+});
+
+
+/*
+ * On Submit
+ */
+ $('.button.submit[data-form="suggest-a-time"]').on('click', function(){
+
+   // Gather attendees
+   var attendees = new Array();
+   suggestATimeWrap.find("input:checked").each(function() {
+      attendees.push($(this).val());
+   });
+
+   // Error message
+   suggestATimeWrap.find('.error-msg').html('');
+   if(attendees.length < 1 )
+   {
+     suggestATimeWrap.find('.error-msg').html('Look for some friends to invite!');
+   }
+
+   $.ajax(
+     {
+       url: "_php/form_actions/suggest-a-time.php",
+       type: 'POST',
+       data: {
+         'attendees': attendees
+       }
+     }
+   ).done(
+     function(results){
+       console.log(results);
+     }
+   );
+
+
+ });
 // The id of the user whose calendar you are trying vie
 var this_users_id = $('input[name="this_users_id"]').val();
 // Your id
@@ -686,7 +771,6 @@ allFriendsWrap.find('.block-column').each(function(){
      }
    ).done(
      function(results){
-       //console.log(results);
        columnWrap.append(results);
 
 
@@ -727,7 +811,6 @@ allFriendsWrap.find('.block-column').each(function(){
  * Position user image wraps at the top
  */
 $('.all-content-wrap.home').find('.user-image-wrap').each(function(){
-  console.log('test');
   var count = $(this).attr('data-count');
   $(this).css('left', count * 180 + "px");
 });
@@ -738,13 +821,8 @@ $('.all-content-wrap.home').find('.user-image-wrap').each(function(){
  * Have the time slots scroll with the page
  */
  var timeSlotsWrap = $('.all-content-wrap.home').find('.time-slots-wrap');
- console.log('Time: ' + timeSlotsWrap.attr('class'));
 $('.all-content-wrap.home').find('.calendar-wrap').on('scroll', function(){
-  console.log('sweeeeet');
   var scrollLeft = $(this).scrollLeft();
-
-  console.log('left: ' + scrollLeft);
-
   // timeSlotsWrap.css('transform', 'translateX(' + scrollLeft + 'px)');
 });
 var notificationsMenu = $('.notifications-menu-wrap');
@@ -846,7 +924,6 @@ notificationsMenu.on('click', '[data-type="event_request"] .button', function(){
   }).done(
     function(res)
     {
-      console.log(res);
       if(res == "Event request removed.." || res == "Event has been added to your calendar!")
       {
         itemWrap.html('<div class="content-wrap">' + res + '</div>');
@@ -937,4 +1014,4 @@ function fetchBlocks(user_id) {
   );
 
 }
-});                                                                             
+});                                                                                

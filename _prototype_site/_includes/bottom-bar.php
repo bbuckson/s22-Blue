@@ -9,7 +9,7 @@
   ?>
 
   <img src="<?php echo $root . $friends_icon; ?>" data-open-pane="friends-menu-wrap" />
-  <img src="<?php echo $root . $add_icon; ?>" />
+  <img src="<?php echo $root . $add_icon; ?>" data-open-pane="add-item-menu-wrap" />
   <img class="user-icon" src="<?php echo $root . $user_icon; ?>" data-open-pane="user-menu-wrap" />
 
 
@@ -58,4 +58,5 @@
 
 
 <?php require('_menus/notifications.php'); ?>
+<?php require('_menus/add-items.php'); ?>
 <?php require('_popups/include-popups.php'); ?>

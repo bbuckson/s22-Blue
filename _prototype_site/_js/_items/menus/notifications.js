@@ -97,7 +97,6 @@ notificationsMenu.on('click', '[data-type="event_request"] .button', function(){
   }).done(
     function(res)
     {
-      console.log(res);
       if(res == "Event request removed.." || res == "Event has been added to your calendar!")
       {
         itemWrap.html('<div class="content-wrap">' + res + '</div>');

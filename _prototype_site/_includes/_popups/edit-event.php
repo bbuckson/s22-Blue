@@ -5,10 +5,10 @@
 
     <?php
       /*
-       * The content for this popup will be dynamically added via edit-event.js and edit-event-contents.php
+       * The content for this popup will be dynamically added via edit-event.js and _php\functions\show_edit_event_contents.php
        */
        ?>
 
-       
+
   </div>
 </div>
