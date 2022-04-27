@@ -43,16 +43,34 @@ if(!is_logged_in())
           <?php
             $friends_list = get_all_friends();
 
+            // Add ourself to front of friend list
+            array_unshift($friends_list, $_SESSION['user_id']);
+
             $friend_count = 0;
             foreach ($friends_list as $friend) :
               //if(get_users_block($friend['user_id_2']) !== null) :
-                $friend_user = get_user($friend['user_id_2']);
+                if($friend_count == 0)
+                {
+                  $friend_user = get_user($_SESSION['user_id']);
+                  $class = "blue";
+                  $username = "me";
+                }
+                else
+                {
+                  $class = "";
+                  $friend_user = get_user($friend['user_id_2']);
+                  $username = $friend_user['username'];
+                }
+
           ?>
 
             <a href="calendar.php?uid=<?php echo $friend_user['id']; ?>" >
-              <div class="user-image-wrap" data-count="<?php echo $friend_count; ?>">
+              <div class="user-image-wrap <?php echo $class; ?>" data-count="<?php echo $friend_count; ?>">
                 <div class="image-wrap">
                   <img src="_pics/_users/<?php echo $friend_user['image']; ?>" />
+                </div>
+                <div class="username">
+                  <?php echo $username; ?>
                 </div>
               </div>
             </a>
@@ -99,16 +117,29 @@ if(!is_logged_in())
           <?php
             $friends_list = get_all_friends();
 
+            // Add ourself to front of friend list
+            array_unshift($friends_list, $_SESSION['user_id']);
+
             $friend_count = 0;
             foreach ($friends_list as $friend) :
               //if(get_users_block($friend['user_id_2']) !== null) :
-                $friend_user = get_user($friend['user_id_2']);
+                if($friend_count == 0)
+                {
+                  $friend_id = $_SESSION['user_id'];
+                  $friend_user = get_user($friend_id);
+                }
+                else
+                {
+                  $friend_id = $friend['user_id_2'];
+                  $friend_user = get_user($friend['user_id_2']);
+                }
+
           ?>
 
 
             <div class="block-column">
 
-              <input type="hidden" name="friend_id" value="<?php echo $friend['user_id_2']; ?>" />
+              <input type="hidden" name="friend_id" value="<?php echo $friend_id; ?>" />
 
 
 

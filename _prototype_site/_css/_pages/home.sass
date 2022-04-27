@@ -11,7 +11,7 @@
     z-index: 99
 
   .user-image-wrap
-    @include flex(row, center, center, nowrap)
+    @include flex(column, center, center, nowrap)
     position: absolute
 
     top: 0px
@@ -25,6 +25,13 @@
 
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px
 
+    font-size: 12px
+
+    &.blue
+      background: $light-blue
+
+      color: $white
+
     img
       border-radius: 80px
       object-fit: cover
@@ -35,7 +42,7 @@
   .stuck-times-wrap
     position: sticky
     //top: 75px
-    left: 15px
+    left: 0vw
     background: $white
 
 

@@ -289,7 +289,7 @@ body a:hover, p a:hover {
 }
 .all-content-wrap.home .user-image-wrap {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
@@ -302,6 +302,11 @@ body a:hover, p a:hover {
   background: white;
   border-radius: 0px 0px 5px 5px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  font-size: 12px;
+}
+.all-content-wrap.home .user-image-wrap.blue {
+  background: #5fbdf6;
+  color: white;
 }
 .all-content-wrap.home .user-image-wrap img {
   border-radius: 80px;
@@ -311,7 +316,7 @@ body a:hover, p a:hover {
 }
 .all-content-wrap.home .stuck-times-wrap {
   position: sticky;
-  left: 15px;
+  left: 0vw;
   background: white;
 }
 .all-content-wrap.home .stuck-times-wrap .time-slot-wrap {
@@ -398,8 +403,7 @@ textarea {
   top: 20px;
   transform: translateX(-50%);
 }
-
-.time-slot-wrap {
+.calendar-wrap .time-slot-wrap {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -408,7 +412,7 @@ textarea {
   width: 94vw;
   border-bottom: solid 1px gainsboro;
 }
-.time-slot-wrap .time-text {
+.calendar-wrap .time-slot-wrap .time-text {
   color: gainsboro;
   padding: 20px 0px;
   text-align: center;
@@ -416,9 +420,10 @@ textarea {
   white-space: nowrap;
   font-weight: bold;
 }
-.time-slot-wrap .time-slot {
+.calendar-wrap .time-slot-wrap .time-slot {
   width: 100%;
 }
+
 .blocks-wrap {
   display: flex;
   flex-direction: row;
