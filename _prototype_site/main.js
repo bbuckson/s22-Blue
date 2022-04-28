@@ -45,6 +45,7 @@ $('.submit[data-form="new-block"]').on('click', function(){
       if(results == "nice"){
         $('.overlay-wrap.new-block').removeClass('show');
         updatePersonalCalendar(this_users_id);
+        upDateHome();
       }
       else{
       }
@@ -298,6 +299,7 @@ $('.button.submit[data-form="new-event"]').on('click', function(){
   ).done(
     function(results){
       updatePersonalCalendar(this_users_id);
+      upDateHome();
       $('.overlay-wrap.show').removeClass('show');
       // if(results == "nice"){
       //   $('.overlay-wrap.new-block').removeClass('show');
@@ -794,7 +796,8 @@ var allFriendsWrap = $('.calendar-wrap.all-friends');
 
 // columnCount is to help us move colums over
 var columnCount = 0;
-
+upDateHome();
+function upDateHome(){
 allFriendsWrap.find('.block-column').each(function(){
   var friendId = $(this).find('input[name="friend_id"]').val();
   console.log(friendId);
@@ -851,7 +854,7 @@ allFriendsWrap.find('.block-column').each(function(){
 
 
 });
-
+}
 
 
 /*
@@ -1061,4 +1064,4 @@ function fetchBlocks(user_id) {
   );
 
 }
-});                                                                                   
+});                                                                                       

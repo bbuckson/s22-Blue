@@ -6,7 +6,8 @@ var allFriendsWrap = $('.calendar-wrap.all-friends');
 
 // columnCount is to help us move colums over
 var columnCount = 0;
-
+upDateHome();
+function upDateHome(){
 allFriendsWrap.find('.block-column').each(function(){
   var friendId = $(this).find('input[name="friend_id"]').val();
   console.log(friendId);
@@ -63,7 +64,7 @@ allFriendsWrap.find('.block-column').each(function(){
 
 
 });
-
+}
 
 
 /*

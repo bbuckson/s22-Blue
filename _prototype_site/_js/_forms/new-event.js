@@ -125,6 +125,7 @@ $('.button.submit[data-form="new-event"]').on('click', function(){
   ).done(
     function(results){
       updatePersonalCalendar(this_users_id);
+      upDateHome();
       $('.overlay-wrap.show').removeClass('show');
       // if(results == "nice"){
       //   $('.overlay-wrap.new-block').removeClass('show');

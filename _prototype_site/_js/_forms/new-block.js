@@ -38,6 +38,7 @@ $('.submit[data-form="new-block"]').on('click', function(){
       if(results == "nice"){
         $('.overlay-wrap.new-block').removeClass('show');
         updatePersonalCalendar(this_users_id);
+        upDateHome();
       }
       else{
       }
